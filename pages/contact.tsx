@@ -13,13 +13,17 @@ const Contact = () => {
 
     // apply the right response message
     useEffect(() => {
-        if (emailResponse === 500)
+        if (emailResponse === 200)
+            setFeedbackMessage('Your email has been sent!');
+        else
             setFeedbackMessage(
                 'Sorry, the email server is broken! Send me a message at o.khandxb@gmail.com'
             );
-        else if (emailResponse === 200)
-            setFeedbackMessage('Your email has been sent!');
     }, [emailResponse]);
+
+    useEffect(() => {
+        setFeedbackMessage('');
+    }, []);
 
     const handleSendEmail = (email: string, message: string) => {
         var payload = {
@@ -27,7 +31,7 @@ const Contact = () => {
             message: message
         };
         emailCall(payload).then((response) =>
-            setEmailResponse(response.status)
+            setEmailResponse(response?.status || 500)
         );
     };
 

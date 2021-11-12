@@ -2,9 +2,12 @@ import IEmailPayload from '../interfaces/IEmailPayload';
 import { getPost } from '../pages/api/api';
 const emailCall = (payload: IEmailPayload) => {
     return (async () => {
-        const apiResponse = getPost(payload);
-
-        return apiResponse;
+        try {
+            const apiResponse = getPost(payload);
+            return apiResponse;
+        } catch (err) {
+            console.log(err);
+        }
     })();
 };
 

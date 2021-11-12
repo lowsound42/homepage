@@ -1,16 +1,29 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import IGithubEvent from '../interfaces/IGithubEvent';
 import ICommits from '../interfaces/ICommits';
 import styled from 'styled-components';
 import extractGithubUrl from '../utilities/simpleHelpers';
 import { device } from '../styles/mediaQueryHelpers';
 import flexColumn from '../styles/mixins';
+import GitHubCard from '../components/GitHubCard';
+import UserContext from '../context/UserContext';
+
+const fakeCommit: ICommits = {
+    author: { email: 'o.khandxb@gmail.com', name: 'Omar Khan' },
+    distinct: true,
+    message:
+        "I guess I haven't made a commit in a while! Email me at o.khandxb@gmail.com and tell me I suck.",
+    sha: 'fakesha',
+    url: 'https://github.com/lowsound42'
+};
+
 export default function Home(props: any) {
-    const [userCommits, setUserCommits] = useState<ICommits>();
+    const [userCommits, setUserCommits] = useState<ICommits>(fakeCommit);
     const [commitTime, setCommitTime] = useState<string>('');
     const [userRepo, setUserRepo] = useState<string>('');
     const [createdEvent, setCreatedEvent] = useState<string>('');
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         const getCommits = async () => {
@@ -45,17 +58,12 @@ export default function Home(props: any) {
                 />
             </Head>
             <HomeContainer>
-                <GitContainer>
-                    <GitTitle>My most recent commit</GitTitle>
-                    <GitTime>{new Date(commitTime).toLocaleString()}</GitTime>
-                    <GitMessage>
-                        {userCommits ? userCommits.message : createdEvent}
-                    </GitMessage>
-                    <UrlPara>
-                        <span>Check the repo out </span>
-                        <a href={`https://github.com/${userRepo}`}>here</a>
-                    </UrlPara>
-                </GitContainer>
+                <GitHubCard
+                    commitTime={commitTime}
+                    userCommits={userCommits}
+                    userRepo={userRepo}
+                    createdEvent={createdEvent}
+                />
                 <TweetContainer>
                     <h3>Latest Tweet</h3>
                     <div
@@ -103,25 +111,8 @@ export async function getServerSideProps(context: any) {
     };
 }
 
-const UrlPara = styled.p`
-    word-wrap: break-word;
-`;
 const HomeContainer = styled.div`
     ${flexColumn}
 `;
 
-const GitContainer = styled(HomeContainer)``;
 const TweetContainer = styled(HomeContainer)``;
-const GitTime = styled.p`
-    font-family: monospace;
-    font-size: 1rem;
-    margin-top: 0rem;
-`;
-const GitTitle = styled.h4`
-    margin-bottom: 0rem;
-`;
-const GitMessage = styled.p`
-    margin-top: 0rem;
-    font-size: 1.2rem;
-    font-family: monospace;
-`;

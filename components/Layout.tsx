@@ -11,16 +11,15 @@ const Layout = ({ children }: LayoutProps) => {
         theme == 'light' ? setTheme('dark') : setTheme('light');
     };
     return (
-        <ThemeProvider theme={theme == 'light' ? lightTheme : darkTheme}>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
             <Navbar />
             <MainContainer>
-                <div className="toggleSwitch">
-                    <label className="switch">
-                        <input type="checkbox" onClick={toggleTheme} />
-                        <span className="slider"></span>
-                    </label>
-                </div>
+                {
+                    <div className="toggleSwitch" onClick={toggleTheme}>
+                        {theme === 'dark' ? <span>🌙</span> : <span>🌞</span>}
+                    </div>
+                }
                 <main>
                     <LayoutContent>{children}</LayoutContent>
                 </main>
