@@ -9,6 +9,11 @@ export default function Home(props: any) {
     const [userCommits, setUserCommits] = useState<ICommits>();
     const [commitTime, setCommitTime] = useState<string>('');
     const [userRepo, setUserRepo] = useState<string>('');
+    const [createdEvent, setCreatedEvent] = useState<string>('');
+
+    useEffect(() => {
+        console.log(userCommits);
+    }, [userCommits]);
 
     useEffect(() => {
         const getCommits = async () => {
@@ -19,10 +24,15 @@ export default function Home(props: any) {
                 }
             );
             const data = await response.json();
+            console.log(data);
             const found = data.find(
-                (object: IGithubEvent) => object.type === 'PushEvent'
+                (object: IGithubEvent) =>
+                    object.type === 'PushEvent' || object.type === 'CreateEvent'
             );
-            setUserCommits(found.payload.commits[0]);
+            console.log(found);
+            found.type === 'PushEvent'
+                ? setUserCommits(found.payload.commits[0])
+                : setCreatedEvent('New repo created');
             setCommitTime(found.created_at);
             setUserRepo(extractGithubUrl(found.repo.url));
         };
@@ -41,7 +51,7 @@ export default function Home(props: any) {
             </Head>
             <div>
                 <h3>Last commit made:</h3>
-                <p>{userCommits?.message}</p>
+                <p>{userCommits ? userCommits.message : createdEvent}</p>
                 <p>{new Date(commitTime).toLocaleString()}</p>
                 <UrlPara>
                     <span>Check the repo out </span>

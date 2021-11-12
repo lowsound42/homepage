@@ -9,6 +9,9 @@
   ref?: string;
   head?: string;
   action?: string;
+  master_branch?: string;
+  pusher_type?: string;
+  ref_type?: string;
 }
 
 export default IPayload
