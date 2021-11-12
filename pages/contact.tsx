@@ -26,7 +26,7 @@ const Contact = () => {
             email: email,
             message: message
         };
-        emailCall(payload, process.env.NEXT_PUBLIC_EMAIL_URL).then((response) =>
+        emailCall(payload).then((response) =>
             setEmailResponse(response.status)
         );
     };

@@ -4,16 +4,13 @@ import IGithubEvent from '../interfaces/IGithubEvent';
 import ICommits from '../interfaces/ICommits';
 import styled from 'styled-components';
 import extractGithubUrl from '../utilities/simpleHelpers';
-
+import { device } from '../styles/mediaQueryHelpers';
+import flexColumn from '../styles/mixins';
 export default function Home(props: any) {
     const [userCommits, setUserCommits] = useState<ICommits>();
     const [commitTime, setCommitTime] = useState<string>('');
     const [userRepo, setUserRepo] = useState<string>('');
     const [createdEvent, setCreatedEvent] = useState<string>('');
-
-    useEffect(() => {
-        console.log(userCommits);
-    }, [userCommits]);
 
     useEffect(() => {
         const getCommits = async () => {
@@ -24,12 +21,10 @@ export default function Home(props: any) {
                 }
             );
             const data = await response.json();
-            console.log(data);
             const found = data.find(
                 (object: IGithubEvent) =>
                     object.type === 'PushEvent' || object.type === 'CreateEvent'
             );
-            console.log(found);
             found.type === 'PushEvent'
                 ? setUserCommits(found.payload.commits[0])
                 : setCreatedEvent('New repo created');
@@ -49,24 +44,28 @@ export default function Home(props: any) {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <div>
-                <h3>Last commit made:</h3>
-                <p>{userCommits ? userCommits.message : createdEvent}</p>
-                <p>{new Date(commitTime).toLocaleString()}</p>
-                <UrlPara>
-                    <span>Check the repo out </span>
-                    <a href={`https://github.com/${userRepo}`}>here</a>
-                </UrlPara>
-            </div>
-            <div>
-                <h3>Latest Tweet</h3>
-                <div
-                    className="content"
-                    dangerouslySetInnerHTML={{
-                        __html: props.data.selectedTweet.html
-                    }}
-                ></div>
-            </div>
+            <HomeContainer>
+                <GitContainer>
+                    <GitTitle>My most recent commit</GitTitle>
+                    <GitTime>{new Date(commitTime).toLocaleString()}</GitTime>
+                    <GitMessage>
+                        {userCommits ? userCommits.message : createdEvent}
+                    </GitMessage>
+                    <UrlPara>
+                        <span>Check the repo out </span>
+                        <a href={`https://github.com/${userRepo}`}>here</a>
+                    </UrlPara>
+                </GitContainer>
+                <TweetContainer>
+                    <h3>Latest Tweet</h3>
+                    <div
+                        className="content"
+                        dangerouslySetInnerHTML={{
+                            __html: props.data.selectedTweet.html
+                        }}
+                    ></div>
+                </TweetContainer>
+            </HomeContainer>
         </div>
     );
 }
@@ -106,4 +105,23 @@ export async function getServerSideProps(context: any) {
 
 const UrlPara = styled.p`
     word-wrap: break-word;
+`;
+const HomeContainer = styled.div`
+    ${flexColumn}
+`;
+
+const GitContainer = styled(HomeContainer)``;
+const TweetContainer = styled(HomeContainer)``;
+const GitTime = styled.p`
+    font-family: monospace;
+    font-size: 1rem;
+    margin-top: 0rem;
+`;
+const GitTitle = styled.h4`
+    margin-bottom: 0rem;
+`;
+const GitMessage = styled.p`
+    margin-top: 0rem;
+    font-size: 1.2rem;
+    font-family: monospace;
 `;
