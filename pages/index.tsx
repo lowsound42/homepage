@@ -8,6 +8,7 @@ import { device } from '../styles/mediaQueryHelpers';
 import flexColumn from '../styles/mixins';
 import GitHubCard from '../components/GitHubCard';
 import UserContext from '../context/UserContext';
+import TweetEmbed from 'react-tweet-embed';
 
 const fakeCommit: ICommits = {
     author: { email: 'o.khandxb@gmail.com', name: 'Omar Khan' },
@@ -19,6 +20,7 @@ const fakeCommit: ICommits = {
 };
 
 export default function Home(props: any) {
+    console.log(props);
     const [userCommits, setUserCommits] = useState<ICommits>(fakeCommit);
     const [commitTime, setCommitTime] = useState<string>('');
     const [userRepo, setUserRepo] = useState<string>('');
@@ -65,13 +67,8 @@ export default function Home(props: any) {
                     createdEvent={createdEvent}
                 />
                 <TweetContainer>
-                    <h3>Latest Tweet</h3>
-                    <div
-                        className="content"
-                        dangerouslySetInnerHTML={{
-                            __html: props.data.selectedTweet.html
-                        }}
-                    ></div>
+                    <h3>Most recent Twitter nonsense</h3>
+                    <TweetEmbed id={props.data.tweets[0].id} />
                 </TweetContainer>
             </HomeContainer>
         </div>
@@ -107,7 +104,9 @@ export async function getServerSideProps(context: any) {
     }
 
     return {
-        props: { data: { tweets: tweets, selectedTweet: selectedTweet } }
+        props: {
+            data: { tweets: tweets, selectedTweet: selectedTweet }
+        }
     };
 }
 

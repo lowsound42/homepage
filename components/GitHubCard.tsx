@@ -26,7 +26,7 @@ const GitHubCard = ({
                 {userCommits ? `: ${userCommits.message}` : `: ${createdEvent}`}
             </GitMessage>
             <UrlPara>
-                <span>Check the repo out </span>
+                <span>Take a look at the repo </span>
                 <GitLink href={`https://github.com/${userRepo}`}>here</GitLink>
             </UrlPara>
         </GitContainer>
