@@ -51,8 +51,9 @@ export default GitHubCard;
 
 const UrlPara = styled.p`
     word-wrap: break-word;
+    align-self: center;
     font-family: monospace;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
     @media ${device.mobileS} {
         font-size: 1rem;
     }
@@ -94,9 +95,18 @@ const GitLink = styled.a`
 `;
 const OuterContainer = styled.div`
     @media ${device.mobileS} {
-        width: 95%;
+        width: 85%;
+    }
+    @media ${device.mobileL} {
+        width: 75%;
+    }
+    @media ${device.tablet} {
+        width: 50%;
     }
     @media ${device.laptop} {
+        width: 40%;
+    }
+    @media ${device.laptopL} {
         width: 30%;
     }
     border: 1px solid black;

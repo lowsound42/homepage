@@ -9,6 +9,7 @@ import mixins from '../styles/mixins';
 import GitHubCard from '../components/GitHubCard';
 import UserContext from '../context/UserContext';
 import TweetEmbed from 'react-tweet-embed';
+import AboutHero from '../components/AboutHero';
 
 const fakeCommit: ICommits = {
     author: { email: 'o.khandxb@gmail.com', name: 'Omar Khan' },
@@ -60,6 +61,7 @@ export default function Home(props: any) {
                 />
             </Head>
             <HomeContainer>
+                <AboutHero />
                 <GitHubCard
                     commitTime={commitTime}
                     userCommits={userCommits}
@@ -68,13 +70,13 @@ export default function Home(props: any) {
                 />
                 <TweetContainer>
                     <h3>Most recent Twitter nonsense</h3>
-                    <DIV>
+                    <TweetHolder>
                         <TweetEmbed
                             className="tweetBox"
                             id={props.data.tweets[0].id}
                             options={{ width: '550px' }}
                         />
-                    </DIV>
+                    </TweetHolder>
                 </TweetContainer>
             </HomeContainer>
         </div>
@@ -123,6 +125,20 @@ const HomeContainer = styled.div`
 const TweetContainer = styled(HomeContainer)`
     align-items: center;
 `;
-const DIV = styled.div`
-    width: 100%;
+const TweetHolder = styled.div`
+    @media ${device.mobileS} {
+        width: 250px;
+    }
+    @media ${device.mobileS} {
+        width: 300px;
+    }
+    @media ${device.mobileL} {
+        width: 400px;
+    }
+    @media ${device.tablet} {
+        width: 600px;
+    }
+    @media ${device.laptop} {
+        width: 1000px;
+    }
 `;
