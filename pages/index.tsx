@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from 'react';
 import IGithubEvent from '../interfaces/IGithubEvent';
 import ICommits from '../interfaces/ICommits';
 import styled from 'styled-components';
-import extractGithubUrl from '../utilities/simpleHelpers';
+import helpers from '../utilities/simpleHelpers';
 import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import GitHubCard from '../components/GitHubCard';
@@ -44,7 +44,7 @@ export default function Home(props: any) {
                 ? setUserCommits(found.payload.commits[0])
                 : setCreatedEvent('New repo created');
             setCommitTime(found.created_at);
-            setUserRepo(extractGithubUrl(found.repo.url));
+            setUserRepo(helpers.extractGithubUrl(found.repo.url));
         };
         getCommits();
     }, []);

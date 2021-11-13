@@ -7,4 +7,6 @@ const extractGithubUrl = (inputUrl: string) => {
     return endOfUrl;
 };
 
-export default extractGithubUrl;
+const helpers = { extractGithubUrl };
+
+export default helpers;

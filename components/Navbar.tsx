@@ -54,4 +54,8 @@ const NavLink = styled.li`
     }
 `;
 
-const NavToggle = styled.div``;
+const NavToggle = styled.div`
+    &:hover {
+        cursor: pointer;
+    }
+`;
