@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { device } from '../styles/mediaQueryHelpers';
-import flexColumn from '../styles/mixins';
+import mixins from '../styles/mixins';
 import ICommits from '../interfaces/ICommits';
-
+import { GoMarkGithub } from 'react-icons/go';
 interface IProps {
     commitTime: string;
     userCommits: ICommits;
@@ -18,18 +18,29 @@ const GitHubCard = ({
 }: IProps) => {
     console.log(userCommits);
     return (
-        <GitContainer>
-            <GitTitle>My most recent commit</GitTitle>
-            <GitTime>{new Date(commitTime).toLocaleString()}</GitTime>
-            <GitMessage>
-                <CommitIntro>Commit Message</CommitIntro>
-                {userCommits ? `: ${userCommits.message}` : `: ${createdEvent}`}
-            </GitMessage>
-            <UrlPara>
-                <span>Take a look at the repo </span>
-                <GitLink href={`https://github.com/${userRepo}`}>here</GitLink>
-            </UrlPara>
-        </GitContainer>
+        <OuterContainer>
+            <IconContainer>
+                <GoMarkGithub size={40} />
+            </IconContainer>
+            <GitContainer>
+                <GitTitle>My most recent commit</GitTitle>
+                <GitTime>{new Date(commitTime).toLocaleString()}</GitTime>
+                <GitMessage>
+                    <CommitIntro>
+                        Commit Message
+                        {userCommits
+                            ? `: ${userCommits.message}`
+                            : `: ${createdEvent}`}
+                    </CommitIntro>
+                </GitMessage>
+                <UrlPara>
+                    <span>Take a look at the repo </span>
+                    <GitLink href={`https://github.com/${userRepo}`}>
+                        here
+                    </GitLink>
+                </UrlPara>
+            </GitContainer>
+        </OuterContainer>
     );
 };
 export default GitHubCard;
@@ -38,9 +49,13 @@ const UrlPara = styled.p`
     word-wrap: break-word;
     font-family: monospace;
     margin-top: 0.5rem;
+    @media ${device.mobileS} {
+        font-size: 1rem;
+    }
 `;
 const GitContainer = styled.div`
-    ${flexColumn}
+    ${mixins.flexColumn}
+    align-items: flex-start;
 `;
 const GitTime = styled.p`
     font-family: monospace;
@@ -55,6 +70,9 @@ const GitMessage = styled.p`
     font-size: 1.2rem;
     font-family: monospace;
     margin-bottom: 0rem;
+    @media ${device.mobileS} {
+        font-size: 1rem;
+    }
 `;
 
 const CommitIntro = styled.span`
@@ -67,3 +85,16 @@ const GitLink = styled.a`
         cursor: pointer;
     }
 `;
+const OuterContainer = styled.div`
+    @media ${device.mobileS} {
+        width: 95%;
+    }
+    ${mixins.flexRow}
+    @media ${device.laptop} {
+        width: 30%;
+    }
+    border: 1px solid black;
+    border-radius: 20px;
+`;
+
+const IconContainer = styled.div``;

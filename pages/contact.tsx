@@ -4,6 +4,7 @@ import emailCall from '../utilities/emailHandler';
 import styled from 'styled-components';
 import { device } from '../styles/mediaQueryHelpers';
 import flexColumn from '../styles/mixins';
+import mixins from '../styles/mixins';
 
 const Contact = () => {
     const [senderEmail, setSenderEmail] = useState<string>('');
@@ -105,11 +106,11 @@ const MainContainer = styled.div`
 `;
 
 const FormContainer = styled.div`
-    ${flexColumn}
+    ${mixins.flexColumn}
 `;
 
 const InputContainer = styled.div`
-    ${flexColumn}
+    ${mixins.flexColumn}
     margin-bottom: 1rem;
 `;
 

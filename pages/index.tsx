@@ -5,7 +5,7 @@ import ICommits from '../interfaces/ICommits';
 import styled from 'styled-components';
 import extractGithubUrl from '../utilities/simpleHelpers';
 import { device } from '../styles/mediaQueryHelpers';
-import flexColumn from '../styles/mixins';
+import mixins from '../styles/mixins';
 import GitHubCard from '../components/GitHubCard';
 import UserContext from '../context/UserContext';
 import TweetEmbed from 'react-tweet-embed';
@@ -68,7 +68,13 @@ export default function Home(props: any) {
                 />
                 <TweetContainer>
                     <h3>Most recent Twitter nonsense</h3>
-                    <TweetEmbed id={props.data.tweets[0].id} />
+                    <DIV>
+                        <TweetEmbed
+                            className="tweetBox"
+                            id={props.data.tweets[0].id}
+                            options={{ width: '550px' }}
+                        />
+                    </DIV>
                 </TweetContainer>
             </HomeContainer>
         </div>
@@ -111,7 +117,12 @@ export async function getServerSideProps(context: any) {
 }
 
 const HomeContainer = styled.div`
-    ${flexColumn}
+    ${mixins.flexColumn};
 `;
 
-const TweetContainer = styled(HomeContainer)``;
+const TweetContainer = styled(HomeContainer)`
+    align-items: center;
+`;
+const DIV = styled.div`
+    width: 100%;
+`;

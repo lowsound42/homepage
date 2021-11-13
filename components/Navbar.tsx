@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import navStyles from '../styles/Navbar.module.css';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -12,7 +11,7 @@ const Navbar = () => {
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
-            <NavContainer className={navStyles.nav}>
+            <NavContainer>
                 <NavUList>
                     <NavLink>
                         <Link href="/">Home</Link>

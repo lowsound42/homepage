@@ -1,6 +1,5 @@
 import Navbar from './Navbar';
 import { LayoutProps } from './types';
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const Layout = ({ children }: LayoutProps) => {
@@ -18,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
 export default Layout;
 
 const MainContainer = styled.div`
-    min-height: 100vh;
+    height: 100vh;
     padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
@@ -26,7 +25,7 @@ const MainContainer = styled.div`
 `;
 
 const LayoutContent = styled.div`
-    padding: 1rem 3rem;
+    padding: 1rem 1rem;
     flex: 1;
     display: flex;
     flex-direction: column;
