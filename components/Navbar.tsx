@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
-            <NavContainer>
+            <NavContainer className=".navContainer">
                 <NavUList>
                     <NavLink>
                         <Link href="/">Home</Link>
@@ -39,8 +39,6 @@ export default Navbar;
 const NavContainer = styled.nav`
     height: 70px;
     padding: 10px 50px;
-    background: #000;
-    color: #fff;
     display: flex;
     align-items: center;
     width: 100%;

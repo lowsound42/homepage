@@ -14,10 +14,17 @@ const AboutHero = () => {
                 />
             </CartoonMe>
             <AboutText>
-                <AboutHeader>Hello</AboutHeader>
+                <AboutHeader>Hello. It&apos;s me, Omar</AboutHeader>
                 <p>
-                    I like cats, dogs, bikes, rock music, pizza, and probably
-                    other stuff as well.
+                    I&apos;m a Web Developer who like cats, dogs, bikes, rock
+                    music, pizza, and probably other stuff as well.
+                </p>
+                <p>
+                    For a while I did technical recruitment for companies in the
+                    fintech and traveltech space and helped build teams that
+                    built great products. These days I&apos;m more interested in
+                    building the things and so here I am, learning what I can to
+                    help me do that.
                 </p>
             </AboutText>
         </AboutContainer>
@@ -27,7 +34,7 @@ export default AboutHero;
 
 const AboutContainer = styled.div`
     ${mixins.flexColumn}
-    height: 60vh;
+    min-height: 60vh;
     justify-content: center;
 `;
 const CartoonMe = styled.div``;

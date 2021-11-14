@@ -118,7 +118,7 @@ const InnerContainer = styled.div`
     @media ${device.laptopL} {
         width: 30%;
     }
-    border: 1px solid black;
+    border: 1px solid #696969;
     border-radius: 20px;
     padding: 1rem 1rem;
 `;
