@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
 export default Layout;
 
 const MainContainer = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 0.5rem;
     display: flex;
     flex-direction: column;

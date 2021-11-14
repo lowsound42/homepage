@@ -20,34 +20,45 @@ const GitHubCard = ({
     console.log(userCommits);
     return (
         <OuterContainer>
-            <IconContainer>
-                <GoMarkGithub size={40} />
-                <GitHeader>Current Project</GitHeader>
-            </IconContainer>
-            <GitContainer>
-                <GitTitle>Most recent commit</GitTitle>
-                <GitTime>
-                    {new Date(commitTime).toLocaleString('en-GB')}
-                </GitTime>
-                <GitMessage>
-                    <CommitIntro>
-                        <b>Commit Message</b>
-                        {userCommits
-                            ? `: ${userCommits.message}`
-                            : `: ${createdEvent}`}
-                    </CommitIntro>
-                </GitMessage>
-                <UrlPara>
-                    <span>Take a look at the repo </span>
-                    <GitLink href={`https://github.com/${userRepo}`}>
-                        here
-                    </GitLink>
-                </UrlPara>
-            </GitContainer>
+            <GitDesc>
+                The most recent work I do on public facing repos shows up here
+            </GitDesc>
+            <InnerContainer>
+                <IconContainer>
+                    <GoMarkGithub size={40} />
+                    <GitHeader>GitHub Activity</GitHeader>
+                </IconContainer>
+                <GitContainer>
+                    <GitTitle>Most recent commit</GitTitle>
+                    <GitTime>
+                        {new Date(commitTime).toLocaleString('en-GB')}
+                    </GitTime>
+                    <GitMessage>
+                        <CommitIntro>
+                            <b>Commit Message</b>
+                            {userCommits
+                                ? `: ${userCommits.message}`
+                                : `: ${createdEvent}`}
+                        </CommitIntro>
+                    </GitMessage>
+                    <UrlPara>
+                        <span>Take a look at the repo </span>
+                        <GitLink href={`https://github.com/${userRepo}`}>
+                            here
+                        </GitLink>
+                    </UrlPara>
+                </GitContainer>
+            </InnerContainer>
         </OuterContainer>
     );
 };
 export default GitHubCard;
+
+const OuterContainer = styled.div`
+    ${mixins.flexColumn}
+    width:100%;
+    min-height: 100vh;
+`;
 
 const UrlPara = styled.p`
     word-wrap: break-word;
@@ -81,6 +92,11 @@ const GitMessage = styled.p`
     }
 `;
 
+const GitDesc = styled.div`
+    font-family: monospace;
+    margin-bottom: 2rem;
+`;
+
 const GitHeader = styled.h3`
     margin-left: 1rem;
 `;
@@ -93,7 +109,7 @@ const GitLink = styled.a`
         cursor: pointer;
     }
 `;
-const OuterContainer = styled.div`
+const InnerContainer = styled.div`
     @media ${device.mobileS} {
         width: 85%;
     }

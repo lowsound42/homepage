@@ -7,7 +7,8 @@ import ArticleCard from '../components/ArticleCard';
 export default function Blog({ data }: any) {
     console.log(data);
     return (
-        <div>
+        <>
+            {' '}
             <Head>
                 <title>GetOmar | Blog</title>
                 <meta charSet="utf-8" />
@@ -17,30 +18,32 @@ export default function Blog({ data }: any) {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <h1>My blogposts</h1>
-            {data.length > 0 ? (
-                <ul>
-                    {data.map((element: any, index: number) => {
-                        return (
-                            <Link
-                                key={index}
-                                href={`/post/${element.slug}`}
-                                passHref
-                            >
-                                <li>
-                                    <ArticleCard
-                                        title={element.title}
-                                        description={element.description}
-                                    ></ArticleCard>
-                                </li>
-                            </Link>
-                        );
-                    })}
-                </ul>
-            ) : (
-                <p>I haven&#8217;t written anything yet 😬</p>
-            )}
-        </div>
+            <div>
+                <h1>My blogposts</h1>
+                {data.length > 0 ? (
+                    <ul>
+                        {data.map((element: any, index: number) => {
+                            return (
+                                <Link
+                                    key={index}
+                                    href={`/post/${element.slug}`}
+                                    passHref
+                                >
+                                    <li>
+                                        <ArticleCard
+                                            title={element.title}
+                                            description={element.description}
+                                        ></ArticleCard>
+                                    </li>
+                                </Link>
+                            );
+                        })}
+                    </ul>
+                ) : (
+                    <p>I haven&#8217;t written anything yet 😬</p>
+                )}
+            </div>
+        </>
     );
 }
 

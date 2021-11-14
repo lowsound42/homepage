@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig';
+import { BiMoon, BiSun } from 'react-icons/bi';
+
+import { device } from '../styles/mediaQueryHelpers';
 const Navbar = () => {
     const [theme, setTheme] = useState<string>('light');
     const toggleTheme = () => {
@@ -17,14 +20,18 @@ const Navbar = () => {
                         <Link href="/">Home</Link>
                     </NavLink>
                     <NavLink>
-                        <Link href="/contact">Contact</Link>
+                        <Link href="/blog">Blog</Link>
                     </NavLink>
                     <NavLink>
-                        <Link href="/blog">Blog</Link>
+                        <Link href="/contact">Contact</Link>
                     </NavLink>
                 </NavUList>
                 <NavToggle onClick={toggleTheme}>
-                    {theme === 'dark' ? '🌙' : '🌞'}
+                    {theme === 'dark' ? (
+                        <BiSun size={30} />
+                    ) : (
+                        <BiMoon size={30} />
+                    )}
                 </NavToggle>
             </NavContainer>
         </ThemeProvider>
@@ -33,19 +40,24 @@ const Navbar = () => {
 export default Navbar;
 
 const NavContainer = styled.nav`
-    height: 50px;
-    padding: 10px;
+    height: 70px;
+    padding: 10px 50px;
     background: #000;
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    width: 100%;
+    justify-content: center;
+    @media ${device.tablet} {
+        justify-content: space-between;
+    }
 `;
 const NavUList = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
+    justify-content: center;
 `;
 
 const NavLink = styled.li`

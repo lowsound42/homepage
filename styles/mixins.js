@@ -10,7 +10,6 @@ const flexColumn = css`
 const flexRow = css`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
 `;
 

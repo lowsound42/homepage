@@ -50,7 +50,7 @@ export default function Home(props: any) {
         getCommits();
     }, []);
     return (
-        <div>
+        <>
             <Head>
                 <title>GetOmar</title>
                 <meta charSet="utf-8" />
@@ -68,8 +68,9 @@ export default function Home(props: any) {
                     userRepo={userRepo}
                     createdEvent={createdEvent}
                 />
+
                 <TweetContainer>
-                    <h3>Most recent Twitter nonsense</h3>
+                    <h3>Twitter Nonsense</h3>
                     <TweetHolder>
                         <TweetEmbed
                             className="tweetBox"
@@ -79,7 +80,7 @@ export default function Home(props: any) {
                     </TweetHolder>
                 </TweetContainer>
             </HomeContainer>
-        </div>
+        </>
     );
 }
 
@@ -119,11 +120,21 @@ export async function getServerSideProps(context: any) {
 }
 
 const HomeContainer = styled.div`
-    ${mixins.flexColumn};
+    @media ${device.mobileS} {
+        ${mixins.flexColumn};
+    }
+`;
+
+const Iframe = styled.iframe`
+    border: 1px solid black;
+    border-radius: 20px;
 `;
 
 const TweetContainer = styled(HomeContainer)`
     align-items: center;
+    ${mixins.flexColumn}
+    width:100%;
+    min-height: 100vh;
 `;
 const TweetHolder = styled.div`
     @media ${device.mobileS} {
