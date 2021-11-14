@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useEffect, useState, useContext } from 'react';
 import IGithubEvent from '../interfaces/IGithubEvent';
 import ICommits from '../interfaces/ICommits';
+import IArticle from '../interfaces/IArticle';
 import styled from 'styled-components';
 import helpers from '../utilities/simpleHelpers';
 import { device } from '../styles/mediaQueryHelpers';
@@ -21,8 +22,11 @@ const fakeCommit: ICommits = {
     url: 'https://github.com/lowsound42'
 };
 
-export default function Home(props: any) {
-    console.log(props);
+interface IProps {
+    data: { blogPosts: IArticle[] };
+}
+
+export default function Home(props: IProps) {
     const [userCommits, setUserCommits] = useState<ICommits>(fakeCommit);
     const [commitTime, setCommitTime] = useState<string>('');
     const [userRepo, setUserRepo] = useState<string>('');
@@ -70,10 +74,7 @@ export default function Home(props: any) {
                     createdEvent={createdEvent}
                 />
                 <BlogHolder>
-                    <Blog
-                        blogPosts={props.data.blogPosts}
-                        className="blogContainer"
-                    />
+                    <Blog blogPosts={props.data.blogPosts} />
                 </BlogHolder>
             </HomeContainer>
         </>
@@ -81,40 +82,11 @@ export default function Home(props: any) {
 }
 
 export async function getServerSideProps(context: any) {
-    const res = await fetch(
-        'https://api.twitter.com/2/users/1589913914/tweets',
-        {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TWITTER_BEARER_TOKEN}`
-            }
-        }
-    );
-    const allTweets = await res.json();
-    const tweets = allTweets.data.filter(
-        (obj: any) => obj.text.slice(0, 2) !== 'RT'
-    );
-
-    const embedFetch = await fetch(
-        `https://publish.twitter.com/oembed?url=https://twitter.com/twitter/status/${tweets[0].id}`,
-        {
-            method: 'GET'
-        }
-    );
-    const selectedTweet = await embedFetch.json();
     const blogPosts = await getAllPosts();
-
-    if (!allTweets) {
-        return {
-            notFound: true
-        };
-    }
 
     return {
         props: {
             data: {
-                tweets: tweets,
-                selectedTweet: selectedTweet,
                 blogPosts: blogPosts
             }
         }
@@ -125,9 +97,14 @@ const HomeContainer = styled.div`
     @media ${device.mobileS} {
         ${mixins.flexColumn};
     }
+    font-family: 'Space Mono';
 `;
 
 const BlogHolder = styled.div`
-    align-self: flex-start;
-    margin-left: 2rem;
+    @media ${device.tablet} {
+        ${mixins.flexColumn};
+        align-self: flex-start;
+        margin-left: 5rem;
+        margin-top: 2rem;
+    }
 `;

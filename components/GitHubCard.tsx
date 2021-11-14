@@ -3,7 +3,6 @@ import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import ICommits from '../interfaces/ICommits';
 import { GoMarkGithub } from 'react-icons/go';
-import helpers from '../utilities/simpleHelpers';
 interface IProps {
     commitTime: string;
     userCommits: ICommits;
@@ -17,7 +16,6 @@ const GitHubCard = ({
     userRepo,
     createdEvent
 }: IProps) => {
-    console.log(userCommits);
     return (
         <OuterContainer>
             <GitDesc>
@@ -62,7 +60,6 @@ const OuterContainer = styled.div`
 const UrlPara = styled.p`
     word-wrap: break-word;
     align-self: center;
-    font-family: monospace;
     margin-top: 1.5rem;
     @media ${device.mobileS} {
         font-size: 1rem;
@@ -73,7 +70,6 @@ const GitContainer = styled.div`
     align-items: flex-start;
 `;
 const GitTime = styled.p`
-    font-family: monospace;
     font-size: 1rem;
     margin-top: 0rem;
 `;
@@ -84,7 +80,6 @@ const GitTitle = styled.h5`
 const GitMessage = styled.p`
     margin-top: 0rem;
     font-size: 1.2rem;
-    font-family: monospace;
     margin-bottom: 0rem;
     @media ${device.mobileS} {
         font-size: 1rem;
@@ -92,7 +87,6 @@ const GitMessage = styled.p`
 `;
 
 const GitDesc = styled.div`
-    font-family: monospace;
     margin-bottom: 2rem;
 `;
 

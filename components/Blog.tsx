@@ -1,16 +1,18 @@
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
-import { getAllPosts } from '../utilities/devTo';
+import IArticle from '../interfaces/IArticle';
 import ArticleCard from '../components/ArticleCard';
 import styled from 'styled-components';
 import mixins from '../styles/mixins';
 import { useEffect, useState } from 'react';
-export default function Blog(props: any) {
-    console.log(props);
+
+interface IProps {
+    blogPosts: IArticle[];
+}
+export default function Blog(props: IProps) {
     return (
         <>
             <BlogContainer>
-                <h1>My blogposts</h1>
+                <BlogHeader>My blogposts</BlogHeader>
                 {props.blogPosts.length > 0 ? (
                     <BlogList>
                         {props.blogPosts.map((element: any, index: number) => {
@@ -38,13 +40,20 @@ export default function Blog(props: any) {
     );
 }
 
+const BlogHeader = styled.div`
+    font-family: 'Space Grotesk';
+    font-weight: 700;
+    font-size: 2rem;
+`;
+
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
     justify-content: center;
     width: 100%;
 `;
-const BlogList = styled.ul``;
+const BlogList = styled.ul`
+    padding-left: 0rem;
+`;
 const BlogListItem = styled.li`
     list-style: none;
-    padding-left: none;
 `;
