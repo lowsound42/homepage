@@ -22,7 +22,7 @@ export default AboutHero;
 
 const AboutContainer = styled.div`
     ${mixins.flexColumn}
-    height: 100vh;
+    height: 60vh;
     justify-content: center;
 `;
 const CartoonMe = styled.div``;

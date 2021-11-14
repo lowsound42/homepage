@@ -6,6 +6,7 @@ import IArticle from '../../interfaces/IArticle';
 import { getAllPosts, getArticleFromCache } from '../../utilities/devTo';
 const cacheFile = './blogcache.json';
 import ReactMarkdown from 'react-markdown';
+import { unlink } from 'fs/promises';
 
 interface IParams extends ParsedUrlQuery {
     slug: string;

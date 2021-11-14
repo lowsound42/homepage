@@ -1,28 +1,19 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 import { getAllPosts } from '../utilities/devTo';
 import ArticleCard from '../components/ArticleCard';
 import styled from 'styled-components';
 import mixins from '../styles/mixins';
-export default function Blog({ data }: any) {
-    console.log(data);
+import { useEffect, useState } from 'react';
+export default function Blog(props: any) {
+    console.log(props);
     return (
         <>
-            <Head>
-                <title>GetOmar | Blog</title>
-                <meta charSet="utf-8" />
-                <meta name="keywords" content="web-development, programming" />
-                <meta
-                    name="viewport"
-                    content="initial-scale=1.0, width=device-width"
-                />
-            </Head>
             <BlogContainer>
                 <h1>My blogposts</h1>
-                {data.length > 0 ? (
+                {props.blogPosts.length > 0 ? (
                     <BlogList>
-                        {data.map((element: any, index: number) => {
+                        {props.blogPosts.map((element: any, index: number) => {
                             return (
                                 <Link
                                     key={index}
@@ -47,16 +38,9 @@ export default function Blog({ data }: any) {
     );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    const data = await getAllPosts();
-
-    return {
-        props: { data }
-    };
-};
-
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
+    justify-content: center;
     width: 100%;
 `;
 const BlogList = styled.ul``;

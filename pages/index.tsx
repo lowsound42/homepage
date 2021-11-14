@@ -8,8 +8,9 @@ import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import GitHubCard from '../components/GitHubCard';
 import UserContext from '../context/UserContext';
-import TweetEmbed from 'react-tweet-embed';
+import { getAllPosts } from '../utilities/devTo';
 import AboutHero from '../components/AboutHero';
+import Blog from '../components/Blog';
 
 const fakeCommit: ICommits = {
     author: { email: 'o.khandxb@gmail.com', name: 'Omar Khan' },
@@ -68,17 +69,12 @@ export default function Home(props: any) {
                     userRepo={userRepo}
                     createdEvent={createdEvent}
                 />
-
-                <TweetContainer>
-                    <h3>Twitter Nonsense</h3>
-                    <TweetHolder>
-                        <TweetEmbed
-                            className="tweetBox"
-                            id={props.data.tweets[0].id}
-                            options={{ width: '550px' }}
-                        />
-                    </TweetHolder>
-                </TweetContainer>
+                <BlogHolder>
+                    <Blog
+                        blogPosts={props.data.blogPosts}
+                        className="blogContainer"
+                    />
+                </BlogHolder>
             </HomeContainer>
         </>
     );
@@ -106,6 +102,8 @@ export async function getServerSideProps(context: any) {
         }
     );
     const selectedTweet = await embedFetch.json();
+    const blogPosts = await getAllPosts();
+
     if (!allTweets) {
         return {
             notFound: true
@@ -114,7 +112,11 @@ export async function getServerSideProps(context: any) {
 
     return {
         props: {
-            data: { tweets: tweets, selectedTweet: selectedTweet }
+            data: {
+                tweets: tweets,
+                selectedTweet: selectedTweet,
+                blogPosts: blogPosts
+            }
         }
     };
 }
@@ -125,31 +127,7 @@ const HomeContainer = styled.div`
     }
 `;
 
-const Iframe = styled.iframe`
-    border: 1px solid black;
-    border-radius: 20px;
-`;
-
-const TweetContainer = styled(HomeContainer)`
-    align-items: center;
-    ${mixins.flexColumn}
-    width:100%;
-    min-height: 100vh;
-`;
-const TweetHolder = styled.div`
-    @media ${device.mobileS} {
-        width: 250px;
-    }
-    @media ${device.mobileS} {
-        width: 300px;
-    }
-    @media ${device.mobileL} {
-        width: 400px;
-    }
-    @media ${device.tablet} {
-        width: 600px;
-    }
-    @media ${device.laptop} {
-        width: 1000px;
-    }
+const BlogHolder = styled.div`
+    align-self: flex-start;
+    margin-left: 2rem;
 `;
