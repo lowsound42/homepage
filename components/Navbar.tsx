@@ -4,9 +4,17 @@ import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig';
 import { BiMoon, BiSun } from 'react-icons/bi';
+import { useRouter } from 'next/router';
 
+const menu = [
+    { title: 'Home', path: '/' },
+    { title: 'Blog', path: '/blog' },
+    { title: 'Projects', path: '/projects' },
+    { title: 'Contact', path: '/contact' }
+];
 import { device } from '../styles/mediaQueryHelpers';
 const Navbar = () => {
+    const router = useRouter();
     const [theme, setTheme] = useState<string>('light');
     const toggleTheme = () => {
         theme == 'light' ? setTheme('dark') : setTheme('light');
@@ -26,18 +34,23 @@ const Navbar = () => {
             <GlobalStyles />
             <NavContainer className=".navContainer">
                 <NavUList>
-                    <NavLink>
-                        <Link href="/">Home</Link>
-                    </NavLink>
-                    <NavLink>
-                        <Link href="/blog">Blog</Link>
-                    </NavLink>
-                    <NavLink>
-                        <Link href="/projects">Projects</Link>
-                    </NavLink>
-                    <NavLink>
-                        <Link href="/contact">Contact</Link>
-                    </NavLink>
+                    {menu.map((item, index) => {
+                        return (
+                            <NavLink key={index}>
+                                <Link href={item.path}>
+                                    <a
+                                        className={`cursor-pointer ${
+                                            router.pathname === item.path
+                                                ? 'activeLink navlink'
+                                                : 'inactiveLink navlink'
+                                        }`}
+                                    >
+                                        {item.title}
+                                    </a>
+                                </Link>
+                            </NavLink>
+                        );
+                    })}
                 </NavUList>
                 <NavToggle onClick={toggleTheme}>
                     {theme === 'dark' ? (

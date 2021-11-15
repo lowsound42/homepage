@@ -124,4 +124,16 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
 
+    .activeLink {
+      border-bottom: 1px solid ${({ theme }) => theme.navText};
+    }
+
+    .inactiveLink:hover{
+      background-color:  ${({ theme }) => theme.navText};
+      color: ${({ theme }) => theme.background};
+    }
+  
+    .navlink{
+      padding: 0.2rem 0.2rem
+    }
 `;
