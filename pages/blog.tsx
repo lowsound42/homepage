@@ -4,20 +4,19 @@ import ArticleCard from '../components/ArticleCard';
 import styled from 'styled-components';
 import mixins from '../styles/mixins';
 import { device } from '../styles/mediaQueryHelpers';
-
+import { getAllPosts } from '../utilities/devTo';
 interface IProps {
-    blogPosts: IArticle[];
+    data: { blogPosts: IArticle[] };
 }
 export default function Blog(props: IProps) {
-    console.log(props);
     return (
         <>
             <BlogContainer>
                 <BlogHolder>
                     <BlogHeader>My blogposts</BlogHeader>
-                    {props.blogPosts.length > 0 ? (
+                    {props.data.blogPosts.length > 0 ? (
                         <BlogList>
-                            {props.blogPosts.map(
+                            {props.data.blogPosts.map(
                                 (element: any, index: number) => {
                                     return (
                                         <Link
@@ -48,6 +47,18 @@ export default function Blog(props: IProps) {
             </BlogContainer>
         </>
     );
+}
+
+export async function getServerSideProps(context: any) {
+    const blogPosts = await getAllPosts();
+
+    return {
+        props: {
+            data: {
+                blogPosts: blogPosts
+            }
+        }
+    };
 }
 
 const BlogHeader = styled.h1`

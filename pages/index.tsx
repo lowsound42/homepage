@@ -9,9 +9,7 @@ import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import GitHubCard from '../components/GitHubCard';
 import UserContext from '../context/UserContext';
-import { getAllPosts } from '../utilities/devTo';
 import AboutHero from '../components/AboutHero';
-import Blog from '../components/Blog';
 
 const fakeCommit: ICommits = {
     author: { email: 'o.khandxb@gmail.com', name: 'Omar Khan' },
@@ -83,24 +81,9 @@ export default function Home(props: IProps) {
                         width: '60%'
                     }}
                 />
-                <BlogHolder id="blogHolder">
-                    <Blog blogPosts={props.data.blogPosts} />
-                </BlogHolder>
             </HomeContainer>
         </>
     );
-}
-
-export async function getServerSideProps(context: any) {
-    const blogPosts = await getAllPosts();
-
-    return {
-        props: {
-            data: {
-                blogPosts: blogPosts
-            }
-        }
-    };
 }
 
 const HomeContainer = styled.div`
