@@ -76,6 +76,7 @@ const AboutContainer = styled.div`
     min-height: 70vh;
     justify-content: center;
     margin-bottom: 2rem;
+    margin-top: 5rem;
 `;
 const CartoonMe = styled.div``;
 const AboutText = styled.div`

@@ -13,7 +13,7 @@ export default function Blog(props: IProps) {
         <>
             <BlogContainer>
                 <BlogHolder>
-                    <BlogHeader>What I&apos;m interested in</BlogHeader>
+                    <BlogHeader>Thoughts and stuff</BlogHeader>
                     {props.data.blogPosts.length > 0 ? (
                         <BlogList>
                             {props.data.blogPosts.map(
@@ -73,10 +73,14 @@ const BlogHolder = styled.div``;
 
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
-    width: 90%;
+    margin-top: 5rem;
+    @media ${device.laptop} {
+        margin-top: 10rem;
+    }
 `;
 const BlogList = styled.ul`
     padding-left: 0rem;
+    margin-top: 3rem;
 `;
 const BlogListItem = styled.li`
     list-style: none;

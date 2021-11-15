@@ -10,6 +10,7 @@ import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { device } from '../../styles/mediaQueryHelpers';
+import Link from 'next/link';
 interface IParams extends ParsedUrlQuery {
     slug: string;
 }
@@ -30,6 +31,9 @@ const Post = (article: IArticle) => {
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {article.body_markdown}
             </ReactMarkdown>
+            <Link href={`/projects`} passHref>
+                <div className="backButtonHolder">Go back to projects</div>
+            </Link>
         </PostContainer>
     );
 };
@@ -64,8 +68,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const PostContainer = styled.div`
     font-family: 'Space Mono';
+    margin-top: 5rem;
+    font-family: 'Space Mono';
     @media ${device.laptop} {
         width: 50%;
         margin: 0 auto;
+        margin-top: 7rem;
     }
 `;

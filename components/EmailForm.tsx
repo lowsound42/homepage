@@ -114,6 +114,10 @@ const Visible = styled.div`
 
 const FormContainer = styled.div`
     ${mixins.flexColumn}
+    margin-top: 5rem;
+    @media ${device.laptop} {
+        margin-top: 7rem;
+    }
     min-height: 70vh;
     justify-content: center;
     width: 100%;

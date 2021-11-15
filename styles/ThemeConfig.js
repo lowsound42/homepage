@@ -18,15 +18,18 @@ import { createGlobalStyle } from 'styled-components';
 // };
 
 export const lightTheme = {
-    body: '#FFEFD5',
+    body: '#FEFCED',
     text: '#5D2689',
     toggleBorder: '#FFF',
     background: '#47297B',
     buttonBody: '#363537',
     buttonText: '#FAFAFA',
-    navText: '#FFEFD5',
+    navText: '#FEFCED',
     link: '#1D00FF',
-    linkClicked: '#D33BDD'
+    linkClicked: '#D33BDD',
+    colorButton: '#FC8370',
+    hoverColorButton: '#C2549D',
+    hoverColorText: '#FFFFFF'
 };
 
 export const darkTheme = {
@@ -35,6 +38,7 @@ export const darkTheme = {
     toggleBorder: '#6B8096',
     background: '#696969',
     buttonBody: '#FAFAFA',
+    navText: '#C6CDF2',
     buttonText: '#363537',
     link: '#FF0000',
     linkClicked: '#F200FF'
@@ -73,5 +77,45 @@ export const GlobalStyles = createGlobalStyle`
     &:visited {
       color: ${({ theme }) => theme.linkClicked};
     }}
+
+    .backButtonHolder{
+      align-self: flex-end;
+      text-align: center;
+      align-self: center;
+      background-color: ${({ theme }) => theme.colorButton};
+      margin-top: 1rem;
+      padding:1rem 1rem;
+  
+      &:hover {
+          cursor: pointer;
+          background-color: ${({ theme }) => theme.hoverColorButton};
+          color: ${({ theme }) => theme.hoverColorText};
+      }
+
+      @media (min-width: 1024px){
+        align-self:flex-end
+      }
+    }
+
+    .readButtonHolder{
+      align-self: flex-end;
+      font-size: 0.9rem;
+      text-align: center;
+      align-self: flex-end;
+      background-color: ${({ theme }) => theme.colorButton};
+      margin-top: 1rem;
+      padding:1rem 1rem;
+  
+      &:hover {
+          cursor: pointer;
+          background-color: ${({ theme }) => theme.hoverColorButton};
+          color: ${({ theme }) => theme.hoverColorText};
+
+      }
+
+      @media (min-width: 1024px){
+        align-self:flex-end
+      }
+    }
 
 `;

@@ -53,6 +53,8 @@ const Navbar = () => {
 export default Navbar;
 
 const NavContainer = styled.nav`
+    position: fixed;
+    z-index: 999;
     height: 70px;
     padding: 10px 50px;
     display: flex;
@@ -64,6 +66,12 @@ const NavContainer = styled.nav`
     }
 `;
 const NavUList = styled.ul`
+    @media ${device.mobileS} {
+        font-size: 0.8rem;
+    }
+    @media ${device.mobileM} {
+        font-size: 1rem;
+    }
     display: flex;
     justify-content: center;
     align-items: center;

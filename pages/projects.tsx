@@ -14,7 +14,7 @@ export default function Blog(props: IProps) {
         <>
             <BlogContainer>
                 <BlogHolder>
-                    <BlogHeader>Things that I&apos;ve made</BlogHeader>
+                    <BlogHeader>Things I&apos;ve made</BlogHeader>
                     {props.data.blogPosts.length > 0 ? (
                         <BlogList>
                             {props.data.blogPosts.map(
@@ -60,18 +60,18 @@ const BlogHeader = styled.h1`
     font-size: 2rem;
 `;
 
-const BlogHolder = styled.div`
-    @media ${device.laptop} {
-        margin-left: 10rem;
-    }
-`;
+const BlogHolder = styled.div``;
 
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
-    width: 70%;
+    margin-top: 5rem;
+    @media ${device.laptop} {
+        margin-top: 10rem;
+    }
 `;
 const BlogList = styled.ul`
     padding-left: 0rem;
+    margin-top: 3rem;
 `;
 const BlogListItem = styled.li`
     list-style: none;
