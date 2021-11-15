@@ -67,4 +67,11 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  p>a{
+    color:  ${({ theme }) => theme.link};
+
+    &:visited {
+      color: ${({ theme }) => theme.linkClicked};
+    }}
+
 `;

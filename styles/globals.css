@@ -39,3 +39,12 @@ a {
 .redMessage {
     color: red;
 }
+
+p > img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+p > a {
+    word-wrap: break-word;
+}

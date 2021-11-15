@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { device } from '../../styles/mediaQueryHelpers';
 interface IParams extends ParsedUrlQuery {
     slug: string;
 }
@@ -25,6 +26,7 @@ const Post = (article: IArticle) => {
                 />
             ) : null}
             <h3>{article.title}</h3>
+            <section className="mt-10 font-light leading-relaxed w-full flex flex-col items-center"></section>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {article.body_markdown}
             </ReactMarkdown>
@@ -62,4 +64,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const PostContainer = styled.div`
     font-family: 'Space Mono';
+    @media ${device.laptop} {
+        width: 50%;
+        margin: 0 auto;
+    }
 `;
