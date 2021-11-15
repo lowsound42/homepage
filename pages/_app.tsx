@@ -10,6 +10,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta charSet="utf-8" />
                 <meta name="keywords" content="web-development, programming" />
                 <meta
+                    name="description"
+                    content="Omar Khan Personal Web Portfolio"
+                />
+                <meta
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
                 />
