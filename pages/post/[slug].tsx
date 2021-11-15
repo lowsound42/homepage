@@ -15,7 +15,12 @@ interface IParams extends ParsedUrlQuery {
 const Post = (article: IArticle) => {
     return (
         <>
-            <Image src={article.cover_image} width="200" height="200" />
+            <Image
+                src={article.cover_image}
+                width="200"
+                height="200"
+                alt="cover image for blog post"
+            />
             <h3>{article.title}</h3>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {article.body_markdown}
