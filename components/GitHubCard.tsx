@@ -41,14 +41,14 @@ const GitHubCard = ({
                         </CommitIntro>
                     </GitMessage>
                     <UrlPara>
-                        <span>Take a look at the repo </span>
+                        <span>Take a look at </span>
                         <GitLink
                             className="hereLink"
                             target="_blank"
                             rel="noreferrer"
                             href={`https://github.com/${userRepo}`}
                         >
-                            here
+                            the repo
                         </GitLink>
                     </UrlPara>
                 </GitContainer>

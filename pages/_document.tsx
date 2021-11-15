@@ -10,15 +10,6 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <meta charSet="utf-8" />
-                    <meta
-                        name="keywords"
-                        content="web-development, programming"
-                    />
-                    <meta
-                        name="viewport"
-                        content="initial-scale=1.0, width=device-width"
-                    />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Space+Mono&display=swap"
                         rel="stylesheet"
