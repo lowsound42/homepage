@@ -17,26 +17,28 @@ export default function Blog(props: IProps) {
                     {props.data.blogPosts.length > 0 ? (
                         <BlogList>
                             {props.data.blogPosts.map(
-                                (element: any, index: number) => {
-                                    return (
-                                        <Link
-                                            key={index}
-                                            href={`/post/${element.slug}`}
-                                            passHref
-                                        >
-                                            <BlogListItem>
-                                                <ArticleCard
-                                                    title={element.title}
-                                                    time={
-                                                        element.published_timestamp
-                                                    }
-                                                    description={
-                                                        element.description
-                                                    }
-                                                ></ArticleCard>
-                                            </BlogListItem>
-                                        </Link>
-                                    );
+                                (element: IArticle, index: number) => {
+                                    if (element.tag_list.includes('blog')) {
+                                        return (
+                                            <Link
+                                                key={index}
+                                                href={`/post/${element.slug}`}
+                                                passHref
+                                            >
+                                                <BlogListItem>
+                                                    <ArticleCard
+                                                        title={element.title}
+                                                        time={
+                                                            element.published_timestamp
+                                                        }
+                                                        description={
+                                                            element.description
+                                                        }
+                                                    ></ArticleCard>
+                                                </BlogListItem>
+                                            </Link>
+                                        );
+                                    }
                                 }
                             )}
                         </BlogList>
@@ -64,7 +66,7 @@ export async function getServerSideProps(context: any) {
 const BlogHeader = styled.h1`
     font-family: 'Space Grotesk';
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 2rem;
 `;
 
 const BlogHolder = styled.div``;

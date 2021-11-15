@@ -19,12 +19,11 @@ const Post = (article: IArticle) => {
             {article.cover_image !== null ? (
                 <Image
                     src={article.cover_image}
-                    width="200"
-                    height="200"
+                    width="100%"
+                    height="100%"
                     alt="cover image for blog post"
                 />
             ) : null}
-
             <h3>{article.title}</h3>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {article.body_markdown}

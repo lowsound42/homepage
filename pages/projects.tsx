@@ -4,17 +4,50 @@ import ArticleCard from '../components/ArticleCard';
 import styled from 'styled-components';
 import mixins from '../styles/mixins';
 import { device } from '../styles/mediaQueryHelpers';
+import { getAllPosts } from '../utilities/devTo';
 
 interface IProps {
-    blogPosts: IArticle[];
+    data: { blogPosts: IArticle[] };
 }
 export default function Blog(props: IProps) {
-    console.log(props);
     return (
         <>
             <BlogContainer>
                 <BlogHolder>
-                    <p>I haven&#8217;t written anything yet 😬</p>
+                    <BlogHeader>What I&apos;m interested in</BlogHeader>
+                    {props.data.blogPosts.length > 0 ? (
+                        <BlogList>
+                            {props.data.blogPosts.map(
+                                (element: IArticle, index: number) => {
+                                    if (
+                                        element.tag_list.includes('portfolio')
+                                    ) {
+                                        return (
+                                            <Link
+                                                key={index}
+                                                href={`/project/${element.slug}`}
+                                                passHref
+                                            >
+                                                <BlogListItem>
+                                                    <ArticleCard
+                                                        title={element.title}
+                                                        time={
+                                                            element.published_timestamp
+                                                        }
+                                                        description={
+                                                            element.description
+                                                        }
+                                                    ></ArticleCard>
+                                                </BlogListItem>
+                                            </Link>
+                                        );
+                                    }
+                                }
+                            )}
+                        </BlogList>
+                    ) : (
+                        <p>I haven&#8217;t written anything yet 😬</p>
+                    )}
                 </BlogHolder>
             </BlogContainer>
         </>
@@ -43,3 +76,14 @@ const BlogList = styled.ul`
 const BlogListItem = styled.li`
     list-style: none;
 `;
+export async function getServerSideProps(context: any) {
+    const blogPosts = await getAllPosts();
+
+    return {
+        props: {
+            data: {
+                blogPosts: blogPosts
+            }
+        }
+    };
+}

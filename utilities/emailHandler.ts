@@ -17,7 +17,6 @@ const emailCall = async (payload: IEmailPayload) => {
             errorMessage: validated,
             emailResponse: emailResponse
         };
-        console.log(returnValue);
         return returnValue;
     } catch (err) {
         console.log(err);
