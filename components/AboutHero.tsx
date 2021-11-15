@@ -51,13 +51,13 @@ const AboutHero = () => {
                 }}
             >
                 <AboutText>
-                    <AboutHeader>Hello. It&apos;s me, Omar</AboutHeader>
+                    <AboutHeader>Hello. I&apos;m Omar.</AboutHeader>
                     <p>
-                        I&apos;m a Web Developer who like cats, dogs, bikes,
+                        I&apos;m a Web Developer who likes cats, dogs, bikes,
                         rock music, pizza, and probably other stuff as well.
                     </p>
                     <p>
-                        For a while I did technical recruitment for companies in
+                        For a while I was a technical recruiter for companies in
                         the fintech and travel-tech spaces. My job was to help
                         build the teams that built those great products. These
                         days I&apos;m more interested in building products and
@@ -75,7 +75,7 @@ const AboutContainer = styled.div`
     ${mixins.flexColumn}
     min-height: 70vh;
     justify-content: center;
-    margin-bottom: 0rem;
+    margin-bottom: 2rem;
 `;
 const CartoonMe = styled.div``;
 const AboutText = styled.div`

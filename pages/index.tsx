@@ -61,11 +61,27 @@ export default function Home(props: IProps) {
             </Head>
             <HomeContainer>
                 <AboutHero />
+                <hr
+                    style={{
+                        borderTop: '1px solid black ',
+                        marginLeft: 20,
+                        marginRight: 20,
+                        width: '60%'
+                    }}
+                />
                 <GitHubCard
                     commitTime={commitTime}
                     userCommits={userCommits}
                     userRepo={userRepo}
                     createdEvent={createdEvent}
+                />
+                <hr
+                    style={{
+                        borderTop: '1px solid black ',
+                        marginLeft: 20,
+                        marginRight: 20,
+                        width: '60%'
+                    }}
                 />
                 <BlogHolder>
                     <Blog blogPosts={props.data.blogPosts} />

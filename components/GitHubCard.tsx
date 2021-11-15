@@ -62,6 +62,8 @@ const OuterContainer = styled.div`
     ${mixins.flexColumn}
     width:100%;
     min-height: 60vh;
+    margin-bottom: 5rem;
+    margin-top: 2rem;
 `;
 
 const UrlPara = styled.p`

@@ -9,6 +9,7 @@ interface IProps {
     blogPosts: IArticle[];
 }
 export default function Blog(props: IProps) {
+    console.log(props);
     return (
         <>
             <BlogContainer>
@@ -27,6 +28,9 @@ export default function Blog(props: IProps) {
                                             <BlogListItem>
                                                 <ArticleCard
                                                     title={element.title}
+                                                    time={
+                                                        element.published_timestamp
+                                                    }
                                                     description={
                                                         element.description
                                                     }
@@ -54,14 +58,13 @@ const BlogHeader = styled.h1`
 
 const BlogHolder = styled.div`
     @media ${device.laptop} {
-        align-self: flex-start;
         margin-left: 10rem;
     }
 `;
 
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
-    width: 100%;
+    width: 70%;
 `;
 const BlogList = styled.ul`
     padding-left: 0rem;

@@ -103,6 +103,7 @@ export default EmailForm;
 
 const Heading = styled.h1`
     text-align: center;
+    font-family: 'Space Grotesk';
 `;
 const Hidden = styled.div`
     display: none;
@@ -113,9 +114,10 @@ const Visible = styled.div`
 
 const FormContainer = styled.div`
     ${mixins.flexColumn}
-    height: 100vh;
+    min-height: 70vh;
     justify-content: center;
     width: 100%;
+    font-family: 'Space Mono';
 `;
 
 const InputContainer = styled.div`
@@ -125,7 +127,7 @@ const InputContainer = styled.div`
 `;
 
 const Button = styled.button`
-    height: 2rem;
+    height: 3rem;
     width: 10rem;
     border-radius: 20px;
 `;
@@ -163,6 +165,6 @@ const MessageHolder = styled.textarea`
     }
     @media ${device.laptop} {
         width: 60%;
-        height: 20rem;
+        height: 10rem;
     }
 `;
