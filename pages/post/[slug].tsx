@@ -6,9 +6,6 @@ import IArticle from '../../interfaces/IArticle';
 import { getAllPosts, getArticleFromCache } from '../../utilities/devTo';
 const cacheFile = './blogcache.json';
 import ReactMarkdown from 'react-markdown';
-import { unified } from 'unified';
-import parse from 'remark-parse';
-import remark2react from 'remark-react';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
 interface IParams extends ParsedUrlQuery {
