@@ -97,8 +97,7 @@ const HomeContainer = styled.div`
 const BlogHolder = styled.div`
     @media ${device.tablet} {
         ${mixins.flexColumn};
-        align-self: flex-start;
-        margin-left: 5rem;
         margin-top: 2rem;
+        width: 100%;
     }
 `;

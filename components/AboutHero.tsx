@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ImHipster } from 'react-icons/im';
+import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import Image from 'next/image';
 const AboutHero = () => {
@@ -21,10 +21,10 @@ const AboutHero = () => {
                 </p>
                 <p>
                     For a while I did technical recruitment for companies in the
-                    fintech and traveltech space and helped build teams that
-                    built great products. These days I&apos;m more interested in
-                    building the things and so here I am, learning what I can to
-                    help me do that.
+                    fintech and travel-tech spaces. My job was to help build the
+                    teams that built those great products. These days I&apos;m
+                    more interested in building products and experiences myself.
+                    So, here I am, learning, building, and experimenting.
                 </p>
             </AboutText>
         </AboutContainer>
@@ -34,7 +34,7 @@ export default AboutHero;
 
 const AboutContainer = styled.div`
     ${mixins.flexColumn}
-    min-height: 30vh;
+    min-height: 70vh;
     justify-content: center;
     margin-bottom: 0rem;
 `;
@@ -42,6 +42,9 @@ const CartoonMe = styled.div``;
 const AboutText = styled.div`
     text-align: center;
     width: 90vw;
+    @media ${device.tablet} {
+        width: 70vw;
+    }
 `;
 const AboutHeader = styled.h1`
     font-family: 'Space Grotesk';

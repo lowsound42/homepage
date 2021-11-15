@@ -61,6 +61,7 @@ export default GitHubCard;
 const OuterContainer = styled.div`
     ${mixins.flexColumn}
     width:100%;
+    min-height: 60vh;
 `;
 
 const UrlPara = styled.p`
