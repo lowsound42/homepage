@@ -28,6 +28,7 @@ export const lightTheme = {
     link: '#1D00FF',
     linkClicked: '#D33BDD',
     colorButton: '#FC8370',
+    colorButtonText: '#FAFAFA',
     hoverColorButton: '#C2549D',
     hoverColorText: '#FFFFFF'
 };
@@ -41,7 +42,11 @@ export const darkTheme = {
     navText: '#C6CDF2',
     buttonText: '#363537',
     link: '#FF0000',
-    linkClicked: '#F200FF'
+    linkClicked: '#F200FF',
+    colorButton: '#C6CDF2',
+    colorButtonText: '#000000',
+    hoverColorButton: '#696969',
+    hoverColorText: '#C6CDF2'
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -85,7 +90,8 @@ export const GlobalStyles = createGlobalStyle`
       background-color: ${({ theme }) => theme.colorButton};
       margin-top: 1rem;
       padding:1rem 1rem;
-  
+      color: ${({ theme }) => theme.colorButtonText};
+
       &:hover {
           cursor: pointer;
           background-color: ${({ theme }) => theme.hoverColorButton};
@@ -105,7 +111,8 @@ export const GlobalStyles = createGlobalStyle`
       background-color: ${({ theme }) => theme.colorButton};
       margin-top: 1rem;
       padding:1rem 1rem;
-  
+      color: ${({ theme }) => theme.colorButtonText};
+
       &:hover {
           cursor: pointer;
           background-color: ${({ theme }) => theme.hoverColorButton};
