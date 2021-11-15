@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig';
 import { BiMoon, BiSun } from 'react-icons/bi';
@@ -11,6 +11,16 @@ const Navbar = () => {
     const toggleTheme = () => {
         theme == 'light' ? setTheme('dark') : setTheme('light');
     };
+
+    useEffect(() => {
+        let preference = localStorage.getItem('themePreference') || 'light';
+        setTheme(preference);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('themePreference', theme);
+    }, [theme]);
+
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
@@ -53,6 +63,7 @@ const NavUList = styled.ul`
     align-items: center;
     list-style: none;
     justify-content: center;
+    padding-left: 0rem;
 `;
 
 const NavLink = styled.li`
