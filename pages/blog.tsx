@@ -13,7 +13,7 @@ export default function Blog(props: IProps) {
         <>
             <BlogContainer>
                 <BlogHolder>
-                    <BlogHeader>My blogposts</BlogHeader>
+                    <BlogHeader>What I&apos;m interested in</BlogHeader>
                     {props.data.blogPosts.length > 0 ? (
                         <BlogList>
                             {props.data.blogPosts.map(
@@ -64,18 +64,14 @@ export async function getServerSideProps(context: any) {
 const BlogHeader = styled.h1`
     font-family: 'Space Grotesk';
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 `;
 
-const BlogHolder = styled.div`
-    @media ${device.laptop} {
-        margin-left: 10rem;
-    }
-`;
+const BlogHolder = styled.div``;
 
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
-    width: 70%;
+    width: 90%;
 `;
 const BlogList = styled.ul`
     padding-left: 0rem;

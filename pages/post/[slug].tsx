@@ -6,7 +6,11 @@ import IArticle from '../../interfaces/IArticle';
 import { getAllPosts, getArticleFromCache } from '../../utilities/devTo';
 const cacheFile = './blogcache.json';
 import ReactMarkdown from 'react-markdown';
-
+import { unified } from 'unified';
+import parse from 'remark-parse';
+import remark2react from 'remark-react';
+import remarkGfm from 'remark-gfm';
+import Image from 'next/image';
 interface IParams extends ParsedUrlQuery {
     slug: string;
 }
@@ -14,8 +18,11 @@ interface IParams extends ParsedUrlQuery {
 const Post = (article: IArticle) => {
     return (
         <>
+            <Image src={article.cover_image} width="200" height="200" />
             <h3>{article.title}</h3>
-            <ReactMarkdown>{article.body_markdown}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {article.body_markdown}
+            </ReactMarkdown>
         </>
     );
 };
@@ -24,6 +31,8 @@ export default Post;
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
+    const buf = fs.readFileSync(cacheFile);
+
     const blogCache = fs.readFileSync(
         path.join(process.cwd(), cacheFile),
         'utf-8'

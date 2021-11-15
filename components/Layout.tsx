@@ -30,5 +30,5 @@ const LayoutContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    font-size: 1.25rem;
+    font-size: 1rem;
 }`;

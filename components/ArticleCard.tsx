@@ -21,4 +21,5 @@ const ReadMore = styled.p`
     &:hover {
         cursor: pointer;
     }
+    font-size: 0.9rem;
 `;
