@@ -83,7 +83,7 @@ export default function Home(props: IProps) {
                         width: '60%'
                     }}
                 />
-                <BlogHolder>
+                <BlogHolder id="blogHolder">
                     <Blog blogPosts={props.data.blogPosts} />
                 </BlogHolder>
             </HomeContainer>

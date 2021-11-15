@@ -30,6 +30,12 @@ const Navbar = () => {
                         <Link href="/">Home</Link>
                     </NavLink>
                     <NavLink>
+                        <Link href="/#blogHolder">Blog</Link>
+                    </NavLink>
+                    <NavLink>
+                        <Link href="/projects">Projects</Link>
+                    </NavLink>
+                    <NavLink>
                         <Link href="/contact">Contact</Link>
                     </NavLink>
                 </NavUList>
