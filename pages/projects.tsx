@@ -14,7 +14,7 @@ export default function Blog(props: IProps) {
         <>
             <BlogContainer>
                 <BlogHolder>
-                    <BlogHeader>What I&apos;m interested in</BlogHeader>
+                    <BlogHeader>Things that I&apos;ve made</BlogHeader>
                     {props.data.blogPosts.length > 0 ? (
                         <BlogList>
                             {props.data.blogPosts.map(
@@ -57,7 +57,7 @@ export default function Blog(props: IProps) {
 const BlogHeader = styled.h1`
     font-family: 'Space Grotesk';
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 2rem;
 `;
 
 const BlogHolder = styled.div`
