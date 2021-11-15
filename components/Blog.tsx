@@ -40,10 +40,10 @@ export default function Blog(props: IProps) {
     );
 }
 
-const BlogHeader = styled.div`
+const BlogHeader = styled.h1`
     font-family: 'Space Grotesk';
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 2.5rem;
 `;
 
 const BlogContainer = styled.div`

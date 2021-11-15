@@ -1,5 +1,6 @@
 interface IEmailPayload {
   email: string,
+  confirmEmail: string,
   message: string
 }
 

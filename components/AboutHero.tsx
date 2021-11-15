@@ -34,8 +34,9 @@ export default AboutHero;
 
 const AboutContainer = styled.div`
     ${mixins.flexColumn}
-    min-height: 60vh;
+    min-height: 30vh;
     justify-content: center;
+    margin-bottom: 0rem;
 `;
 const CartoonMe = styled.div``;
 const AboutText = styled.div`
@@ -44,4 +45,5 @@ const AboutText = styled.div`
 `;
 const AboutHeader = styled.h1`
     font-family: 'Space Grotesk';
+    font-size: 2.5rem;
 `;

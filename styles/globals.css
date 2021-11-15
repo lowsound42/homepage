@@ -31,3 +31,11 @@ a {
 .blogContainer {
     align-self: flex-start;
 }
+
+.greenMessage {
+    color: green;
+}
+
+.redMessage {
+    color: red;
+}

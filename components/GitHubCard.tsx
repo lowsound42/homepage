@@ -18,6 +18,7 @@ const GitHubCard = ({
 }: IProps) => {
     return (
         <OuterContainer>
+            <GitIntro>Creep my GitHub</GitIntro>
             <GitDesc>
                 The most recent work I do on public facing repos shows up here
             </GitDesc>
@@ -41,7 +42,11 @@ const GitHubCard = ({
                     </GitMessage>
                     <UrlPara>
                         <span>Take a look at the repo </span>
-                        <GitLink href={`https://github.com/${userRepo}`}>
+                        <GitLink
+                            className="hereLink"
+                            target="_blank"
+                            href={`https://github.com/${userRepo}`}
+                        >
                             here
                         </GitLink>
                     </UrlPara>
@@ -86,6 +91,10 @@ const GitMessage = styled.p`
     }
 `;
 
+const GitIntro = styled.h2`
+    text-align: center;
+`;
+
 const GitDesc = styled.div`
     margin-bottom: 2rem;
 `;
@@ -97,7 +106,6 @@ const GitHeader = styled.h3`
 const CommitIntro = styled.span``;
 
 const GitLink = styled.a`
-    color: blue;
     &:hover {
         cursor: pointer;
     }
@@ -119,7 +127,7 @@ const InnerContainer = styled.div`
         width: 30%;
     }
     border: 1px solid #696969;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 1rem 1rem;
 `;
 

@@ -24,7 +24,9 @@ export const lightTheme = {
     background: '#47297B',
     buttonBody: '#363537',
     buttonText: '#FAFAFA',
-    navText: '#FFEFD5'
+    navText: '#FFEFD5',
+    link: '#1D00FF',
+    linkClicked: '#D33BDD'
 };
 
 export const darkTheme = {
@@ -33,7 +35,9 @@ export const darkTheme = {
     toggleBorder: '#6B8096',
     background: '#696969',
     buttonBody: '#FAFAFA',
-    buttonText: '#363537'
+    buttonText: '#363537',
+    link: '#FF0000',
+    linkClicked: '#F200FF'
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -53,6 +57,14 @@ export const GlobalStyles = createGlobalStyle`
   nav{
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.navText};
+  }
+
+  .hereLink{
+    color:  ${({ theme }) => theme.link};
+
+    &:visited {
+      color: ${({ theme }) => theme.linkClicked};
+    }
   }
 
 `;
