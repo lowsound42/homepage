@@ -45,6 +45,7 @@ const GitHubCard = ({
                         <GitLink
                             className="hereLink"
                             target="_blank"
+                            rel="noreferrer"
                             href={`https://github.com/${userRepo}`}
                         >
                             here

@@ -58,12 +58,6 @@ export default function Home(props: IProps) {
         <>
             <Head>
                 <title>GetOmar</title>
-                <meta charSet="utf-8" />
-                <meta name="keywords" content="web-development, programming" />
-                <meta
-                    name="viewport"
-                    content="initial-scale=1.0, width=device-width"
-                />
             </Head>
             <HomeContainer>
                 <AboutHero />
