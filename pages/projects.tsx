@@ -1,11 +1,11 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import IArticle from '../interfaces/IArticle';
 import ArticleCard from '../components/ArticleCard';
 import styled from 'styled-components';
 import mixins from '../styles/mixins';
 import { device } from '../styles/mediaQueryHelpers';
 import { getAllPosts } from '../utilities/devTo';
-import { motion } from 'framer-motion';
 
 interface IProps {
     data: { blogPosts: IArticle[] };
@@ -13,66 +13,47 @@ interface IProps {
 export default function Blog(props: IProps) {
     return (
         <>
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={{
-                    hidden: {
-                        scale: 0.8,
-                        opacity: 0
-                    },
-                    visible: {
-                        scale: 1,
-                        opacity: 1,
-                        transition: {
-                            delay: 0.4
-                        }
-                    }
-                }}
-            >
-                <BlogContainer>
-                    <BlogHolder>
-                        <BlogHeader>Things I&apos;ve made</BlogHeader>
-                        {props.data.blogPosts.length > 0 ? (
-                            <BlogList>
-                                {props.data.blogPosts.map(
-                                    (element: IArticle, index: number) => {
-                                        if (
-                                            element.tag_list.includes(
-                                                'portfolio'
-                                            )
-                                        ) {
-                                            return (
-                                                <Link
-                                                    key={index}
-                                                    href={`/project/${element.slug}`}
-                                                    passHref
-                                                >
-                                                    <BlogListItem>
-                                                        <ArticleCard
-                                                            title={
-                                                                element.title
-                                                            }
-                                                            time={
-                                                                element.published_timestamp
-                                                            }
-                                                            description={
-                                                                element.description
-                                                            }
-                                                        ></ArticleCard>
-                                                    </BlogListItem>
-                                                </Link>
-                                            );
-                                        }
+            <Head>
+                <title>Projects</title>
+            </Head>
+            <BlogContainer>
+                <BlogHolder>
+                    <BlogHeader>Things I&apos;ve made</BlogHeader>
+                    {props.data.blogPosts.length > 0 ? (
+                        <BlogList>
+                            {props.data.blogPosts.map(
+                                (element: IArticle, index: number) => {
+                                    if (
+                                        element.tag_list.includes('portfolio')
+                                    ) {
+                                        return (
+                                            <Link
+                                                key={index}
+                                                href={`/project/${element.slug}`}
+                                                passHref
+                                            >
+                                                <BlogListItem>
+                                                    <ArticleCard
+                                                        title={element.title}
+                                                        time={
+                                                            element.published_timestamp
+                                                        }
+                                                        description={
+                                                            element.description
+                                                        }
+                                                    ></ArticleCard>
+                                                </BlogListItem>
+                                            </Link>
+                                        );
                                     }
-                                )}
-                            </BlogList>
-                        ) : (
-                            <p>I haven&#8217;t written anything yet 😬</p>
-                        )}
-                    </BlogHolder>
-                </BlogContainer>
-            </motion.div>
+                                }
+                            )}
+                        </BlogList>
+                    ) : (
+                        <p>I haven&#8217;t written anything yet 😬</p>
+                    )}
+                </BlogHolder>
+            </BlogContainer>
         </>
     );
 }

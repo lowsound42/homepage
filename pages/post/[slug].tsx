@@ -1,4 +1,5 @@
 import fs from 'fs';
+import Head from 'next/head';
 import path from 'path';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { ParsedUrlQuery } from 'querystring';
@@ -12,14 +13,16 @@ import styled from 'styled-components';
 import { device } from '../../styles/mediaQueryHelpers';
 import Link from 'next/link';
 import mixins from '../../styles/mixins';
-import { motion } from 'framer-motion';
 interface IParams extends ParsedUrlQuery {
     slug: string;
 }
 
 const Post = (article: IArticle) => {
     return (
-        <motion.div animate={{ x: 0 }} transition={{ delay: 2 }}>
+        <>
+            <Head>
+                <title>{article.title}</title>
+            </Head>
             <PostContainer>
                 {article.cover_image !== null ? (
                     <Image
@@ -37,7 +40,7 @@ const Post = (article: IArticle) => {
                     <div className="backButtonHolder">Go back to blogs</div>
                 </Link>
             </PostContainer>
-        </motion.div>
+        </>
     );
 };
 
