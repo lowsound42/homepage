@@ -12,9 +12,11 @@ const EmailForm = () => {
     const [feedbackMessage, setFeedbackMessage] = useState<string>('');
     const [errMessage, setErrorMessage] = useState<number>(0);
     const [messageColour, setMessageColour] = useState<string>('');
+    const [inProgress, setInProgress] = useState<boolean>(false);
 
     // apply the right response message
     useEffect(() => {
+        setInProgress(false);
         setMessageColour('redMessage');
         if (emailResponse === 200) {
             setMessageColour('greenMessage');
@@ -35,6 +37,7 @@ const EmailForm = () => {
         confirmEmail: string,
         message: string
     ) => {
+        setInProgress(true);
         setErrorMessage(0);
         var payload = {
             email: email,
@@ -81,7 +84,9 @@ const EmailForm = () => {
                     onChange={(e) => setSenderMessage(e.target.value)}
                 />
             </InputContainer>
+            {inProgress ? <SendingMessage>Sending...</SendingMessage> : null}
             <Button
+                disabled={inProgress}
                 value="submit"
                 onClick={() =>
                     handleSendEmail(senderEmail, confirmEmail, senderMessage)
@@ -112,6 +117,16 @@ const Visible = styled.div`
     display: block;
 `;
 
+const SendingMessage = styled.p`
+    animation: blinker 1s linear infinite;
+
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+`;
+
 const FormContainer = styled.div`
     ${mixins.flexColumn}
     margin-top: 5rem;
@@ -134,6 +149,9 @@ const Button = styled.button`
     height: 3rem;
     width: 10rem;
     border-radius: 20px;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const MarginLabel = styled.label`
