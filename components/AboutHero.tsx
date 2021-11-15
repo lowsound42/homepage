@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 const AboutHero = () => {
     return (
