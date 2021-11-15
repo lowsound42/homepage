@@ -11,30 +11,33 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { device } from '../../styles/mediaQueryHelpers';
 import Link from 'next/link';
+import mixins from '../../styles/mixins';
+import { motion } from 'framer-motion';
 interface IParams extends ParsedUrlQuery {
     slug: string;
 }
 
 const Post = (article: IArticle) => {
     return (
-        <PostContainer>
-            {article.cover_image !== null ? (
-                <Image
-                    src={article.cover_image}
-                    width="100%"
-                    height="100%"
-                    alt="cover image for blog post"
-                />
-            ) : null}
-            <h3>{article.title}</h3>
-            <section className="mt-10 font-light leading-relaxed w-full flex flex-col items-center"></section>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {article.body_markdown}
-            </ReactMarkdown>
-            <Link href={`/projects`} passHref>
-                <div className="backButtonHolder">Go back to projects</div>
-            </Link>
-        </PostContainer>
+        <motion.div animate={{ x: 0 }} transition={{ delay: 2 }}>
+            <PostContainer>
+                {article.cover_image !== null ? (
+                    <Image
+                        src={article.cover_image}
+                        width="100%"
+                        height="100%"
+                        alt="cover image for blog post"
+                    />
+                ) : null}
+                <h3>{article.title}</h3>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {article.body_markdown}
+                </ReactMarkdown>
+                <Link href={`/projects`} passHref>
+                    <div className="backButtonHolder">Go back to projects</div>
+                </Link>
+            </PostContainer>
+        </motion.div>
     );
 };
 
@@ -65,9 +68,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return { paths, fallback: false };
 };
-
 const PostContainer = styled.div`
-    font-family: 'Space Mono';
+    ${mixins.flexColumn}
+    align-items:flex-start;
     margin-top: 5rem;
     font-family: 'Space Mono';
     @media ${device.laptop} {

@@ -12,29 +12,32 @@ import styled from 'styled-components';
 import { device } from '../../styles/mediaQueryHelpers';
 import Link from 'next/link';
 import mixins from '../../styles/mixins';
+import { motion } from 'framer-motion';
 interface IParams extends ParsedUrlQuery {
     slug: string;
 }
 
 const Post = (article: IArticle) => {
     return (
-        <PostContainer>
-            {article.cover_image !== null ? (
-                <Image
-                    src={article.cover_image}
-                    width="200"
-                    height="200"
-                    alt="cover image for blog post"
-                />
-            ) : null}
-            <h3>{article.title}</h3>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {article.body_markdown}
-            </ReactMarkdown>
-            <Link href={`/blog`} passHref>
-                <div className="backButtonHolder">Go back to blogs</div>
-            </Link>
-        </PostContainer>
+        <motion.div animate={{ x: 0 }} transition={{ delay: 2 }}>
+            <PostContainer>
+                {article.cover_image !== null ? (
+                    <Image
+                        src={article.cover_image}
+                        width="200"
+                        height="200"
+                        alt="cover image for blog post"
+                    />
+                ) : null}
+                <h3>{article.title}</h3>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {article.body_markdown}
+                </ReactMarkdown>
+                <Link href={`/blog`} passHref>
+                    <div className="backButtonHolder">Go back to blogs</div>
+                </Link>
+            </PostContainer>
+        </motion.div>
     );
 };
 

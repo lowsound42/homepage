@@ -5,48 +5,69 @@ import styled from 'styled-components';
 import mixins from '../styles/mixins';
 import { device } from '../styles/mediaQueryHelpers';
 import { getAllPosts } from '../utilities/devTo';
+import { motion } from 'framer-motion';
 interface IProps {
     data: { blogPosts: IArticle[] };
 }
 export default function Blog(props: IProps) {
     return (
         <>
-            <BlogContainer>
-                <BlogHolder>
-                    <BlogHeader>Thoughts and stuff</BlogHeader>
-                    {props.data.blogPosts.length > 0 ? (
-                        <BlogList>
-                            {props.data.blogPosts.map(
-                                (element: IArticle, index: number) => {
-                                    if (element.tag_list.includes('blog')) {
-                                        return (
-                                            <Link
-                                                key={index}
-                                                href={`/post/${element.slug}`}
-                                                passHref
-                                            >
-                                                <BlogListItem>
-                                                    <ArticleCard
-                                                        title={element.title}
-                                                        time={
-                                                            element.published_timestamp
-                                                        }
-                                                        description={
-                                                            element.description
-                                                        }
-                                                    ></ArticleCard>
-                                                </BlogListItem>
-                                            </Link>
-                                        );
+            <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{
+                    hidden: {
+                        scale: 0.8,
+                        opacity: 0
+                    },
+                    visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                            delay: 0.4
+                        }
+                    }
+                }}
+            >
+                <BlogContainer>
+                    <BlogHolder>
+                        <BlogHeader>Thoughts and stuff</BlogHeader>
+                        {props.data.blogPosts.length > 0 ? (
+                            <BlogList>
+                                {props.data.blogPosts.map(
+                                    (element: IArticle, index: number) => {
+                                        if (element.tag_list.includes('blog')) {
+                                            return (
+                                                <Link
+                                                    key={index}
+                                                    href={`/post/${element.slug}`}
+                                                    passHref
+                                                >
+                                                    <BlogListItem>
+                                                        <ArticleCard
+                                                            title={
+                                                                element.title
+                                                            }
+                                                            time={
+                                                                element.published_timestamp
+                                                            }
+                                                            description={
+                                                                element.description
+                                                            }
+                                                        ></ArticleCard>
+                                                    </BlogListItem>
+                                                </Link>
+                                            );
+                                        }
                                     }
-                                }
-                            )}
-                        </BlogList>
-                    ) : (
-                        <p>I haven&#8217;t written anything yet 😬</p>
-                    )}
-                </BlogHolder>
-            </BlogContainer>
+                                )}
+                            </BlogList>
+                        ) : (
+                            <p>I haven&#8217;t written anything yet 😬</p>
+                        )}
+                    </BlogHolder>
+                </BlogContainer>
+            </motion.div>
         </>
     );
 }

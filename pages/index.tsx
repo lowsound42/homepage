@@ -10,6 +10,7 @@ import mixins from '../styles/mixins';
 import GitHubCard from '../components/GitHubCard';
 import UserContext from '../context/UserContext';
 import AboutHero from '../components/AboutHero';
+import { motion } from 'framer-motion';
 
 const fakeCommit: ICommits = {
     author: { email: 'o.khandxb@gmail.com', name: 'Omar Khan' },
@@ -57,31 +58,33 @@ export default function Home(props: IProps) {
             <Head>
                 <title>GetOmar</title>
             </Head>
-            <HomeContainer>
-                <AboutHero />
-                <hr
-                    style={{
-                        borderTop: '1px solid black ',
-                        marginLeft: 20,
-                        marginRight: 20,
-                        width: '60%'
-                    }}
-                />
-                <GitHubCard
-                    commitTime={commitTime}
-                    userCommits={userCommits}
-                    userRepo={userRepo}
-                    createdEvent={createdEvent}
-                />
-                <hr
-                    style={{
-                        borderTop: '1px solid black ',
-                        marginLeft: 20,
-                        marginRight: 20,
-                        width: '60%'
-                    }}
-                />
-            </HomeContainer>
+            <motion.div animate={{ x: 0 }} transition={{ delay: 1 }}>
+                <HomeContainer>
+                    <AboutHero />
+                    <hr
+                        style={{
+                            borderTop: '1px solid black ',
+                            marginLeft: 20,
+                            marginRight: 20,
+                            width: '60%'
+                        }}
+                    />
+                    <GitHubCard
+                        commitTime={commitTime}
+                        userCommits={userCommits}
+                        userRepo={userRepo}
+                        createdEvent={createdEvent}
+                    />
+                    <hr
+                        style={{
+                            borderTop: '1px solid black ',
+                            marginLeft: 20,
+                            marginRight: 20,
+                            width: '60%'
+                        }}
+                    />
+                </HomeContainer>
+            </motion.div>
         </>
     );
 }

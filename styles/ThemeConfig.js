@@ -84,12 +84,11 @@ export const GlobalStyles = createGlobalStyle`
     }}
 
     .backButtonHolder{
-      align-self: flex-end;
       text-align: center;
-      align-self: center;
       background-color: ${({ theme }) => theme.colorButton};
       margin-top: 1rem;
       padding:1rem 1rem;
+      align-self: flex-end;
       color: ${({ theme }) => theme.colorButtonText};
 
       &:hover {
