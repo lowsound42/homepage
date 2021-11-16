@@ -23,10 +23,6 @@ const GitHubCard = ({
                 The most recent work I do on public facing repos shows up here
             </GitDesc>
             <InnerContainer>
-                <IconContainer>
-                    <GoMarkGithub size={40} />
-                    <GitHeader>GitHub Activity</GitHeader>
-                </IconContainer>
                 <GitContainer>
                     <GitTitle>Most recent commit</GitTitle>
                     <GitTime>
@@ -81,7 +77,7 @@ const GitTime = styled.p`
     font-size: 1rem;
     margin-top: 0rem;
 `;
-const GitTitle = styled.h5`
+const GitTitle = styled.h3`
     margin-bottom: 0.25rem;
     margin-top: 0rem;
 `;
@@ -103,11 +99,9 @@ const GitDesc = styled.div`
     text-align: center;
 `;
 
-const GitHeader = styled.h3`
-    margin-left: 1rem;
+const CommitIntro = styled.span`
+    font-size: 1rem;
 `;
-
-const CommitIntro = styled.span``;
 
 const GitLink = styled.a`
     &:hover {
@@ -133,10 +127,4 @@ const InnerContainer = styled.div`
     border: 1px solid #696969;
     border-radius: 5px;
     padding: 1rem 1rem;
-`;
-
-const IconContainer = styled.div`
-    ${mixins.flexRow}
-    justify-content: flex-start;
-    margin-bottom: 0rem;
 `;

@@ -32,13 +32,6 @@ const AboutHero = () => {
             </AboutText>
             <AboutSocial>
                 <SocialLink
-                    href="https://github.com/lowsound42"
-                    rel="noreferrer"
-                    target="_blank"
-                >
-                    <SiGithub size={40} />
-                </SocialLink>
-                <SocialLink
                     href="https://www.linkedin.com/in/omarkhanhr/"
                     rel="noreferrer"
                     target="_blank"
@@ -60,7 +53,7 @@ const AboutContainer = styled.div`
 `;
 const AboutSocial = styled.div`
     ${mixins.flexRow}
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 2rem;
     width: 35%;
     @media ${device.tablet} {

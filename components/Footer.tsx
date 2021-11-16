@@ -52,7 +52,7 @@ const Social = styled.div`
     margin-bottom: 2rem;
     width: 20%;
     @media ${device.laptop}{
-      width: 10%;
+      width: 8%;
     }
   }`;
 
