@@ -92,5 +92,5 @@ const HomeContainer = styled.div`
         ${mixins.flexColumn};
     }
     font-family: 'Space Mono';
-    margin-bottom: 6rem;
+    margin-bottom: 10rem;
 `;
