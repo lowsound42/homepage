@@ -71,9 +71,12 @@ const SocialLink = styled.a``;
 const CartoonMe = styled(motion.div)``;
 const AboutText = styled.div`
     text-align: center;
-    width: 90vw;
-    @media ${device.tablet} {
-        width: 70vw;
+    width: 90%;
+    @media ${device.laptop} {
+        width: 70%;
+    }
+    @media ${device.laptop} {
+        width: 50%;
     }
 `;
 const AboutHeader = styled.h1`
