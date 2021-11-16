@@ -84,7 +84,6 @@ const EmailForm = () => {
                     onChange={(e) => setSenderMessage(e.target.value)}
                 />
             </InputContainer>
-            {inProgress ? <SendingMessage>Sending...</SendingMessage> : null}
             <Button
                 disabled={inProgress}
                 value="submit"
@@ -101,6 +100,7 @@ const EmailForm = () => {
                     <p className={messageColour}>{feedbackMessage}</p>
                 </Visible>
             )}
+            {inProgress ? <SendingMessage>Sending...</SendingMessage> : null}
         </FormContainer>
     );
 };
@@ -130,13 +130,15 @@ const SendingMessage = styled.p`
 const FormContainer = styled.div`
     ${mixins.flexColumn}
     margin-top: 5rem;
-    @media ${device.laptop} {
-        margin-top: 7rem;
-    }
     min-height: 70vh;
     justify-content: center;
     width: 100%;
     font-family: 'Space Mono';
+    @media ${device.laptop} {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 7rem;
+    }
 `;
 
 const InputContainer = styled.div`

@@ -6,6 +6,7 @@ import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig';
 import { BiMoon, BiSun } from 'react-icons/bi';
 import { useRouter } from 'next/router';
 
+// Array of links/pages
 const menu = [
     { title: 'Home', path: '/' },
     { title: 'Blog', path: '/blog' },
@@ -29,6 +30,7 @@ const Navbar = () => {
         localStorage.setItem('themePreference', theme);
     }, [theme]);
 
+    // we loop over the array of pages and generate the links dynamically. This way we can check what path we are on and set the active link accordingly
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />

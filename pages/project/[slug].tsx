@@ -46,6 +46,8 @@ const Post = (article: IArticle) => {
 
 export default Post;
 
+// Huge thank you to James Wallis over at https://wallis.dev/ for writing such detailed posts about how he built his home page.
+// This bottom part is me just pilfering that but it helped me really understand how to use getStaticPaths and getStaticProps.
 export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
 

@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
                 />
             </Head>
             <Layout>
-                <motion.div
+                <motion.div // simple animation that will work for all routers as well.
                     key={router.route}
                     initial="initial"
                     animate="animate"

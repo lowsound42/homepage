@@ -22,6 +22,7 @@ export default function Blog(props: IProps) {
                         <BlogList>
                             {props.data.blogPosts.map(
                                 (element: IArticle, index: number) => {
+                                    // only pick articles with the blog tag, we do the same for projects
                                     if (element.tag_list.includes('blog')) {
                                         return (
                                             <ItemContainer key={index}>

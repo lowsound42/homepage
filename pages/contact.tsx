@@ -6,7 +6,6 @@ const Contact = () => {
             <Head>
                 <title>Contact</title>
             </Head>
-
             <EmailForm />
         </>
     );
