@@ -84,6 +84,7 @@ const BlogHolder = styled.div``;
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
     margin-top: 5rem;
+    font-family: 'Space Mono';
     @media ${device.laptop} {
         margin-top: 10rem;
     }
