@@ -134,6 +134,7 @@ const FormContainer = styled.div`
     justify-content: center;
     width: 100%;
     font-family: 'Space Mono';
+    margin-bottom: 10rem;
     @media ${device.laptop} {
         width: 50%;
         margin: 0 auto;
