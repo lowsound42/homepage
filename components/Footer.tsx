@@ -37,7 +37,7 @@ const FooterContainer = styled.div`
     position: absolute;
     bottom: 0;
     ${mixins.flexColumn}
-    width: 100vw;
+    width: 100%;
     justify-content: center;
     font-family: 'Space Grotesk';
 `;

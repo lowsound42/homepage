@@ -89,9 +89,12 @@ const BlogContainer = styled.div`
     margin-top: 8rem;
     width: 80%;
     margin-bottom: 10rem;
+    @media ${device.tablet} {
+        width: 50%;
+    }
     @media ${device.laptop} {
         margin-top: 10rem;
-        width: 60%;
+        width: 40%;
     }
 `;
 const BlogList = styled.ul`

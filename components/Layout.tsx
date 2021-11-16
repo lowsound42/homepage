@@ -27,7 +27,6 @@ const MainContainer = styled.div`
 `;
 
 const LayoutContent = styled.div`
-    padding: 1rem 1rem;
     flex: 1;
     display: flex;
     flex-direction: column;
