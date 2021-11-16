@@ -21,7 +21,7 @@ const Post = (article: IArticle) => {
   return (
     <>
       <Head>
-        <title>{article.title}</title>
+        <title>Blog Post</title>
       </Head>
       <PostContainer>
         {article.cover_image !== null ? (
