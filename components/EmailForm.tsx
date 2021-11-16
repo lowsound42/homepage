@@ -139,6 +139,7 @@ const FormContainer = styled.div`
         width: 50%;
         margin: 0 auto;
         margin-top: 7rem;
+        margin-bottom: 10rem;
     }
 `;
 
