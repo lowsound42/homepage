@@ -16,6 +16,7 @@ const EmailForm = () => {
 
     // apply the right response message
     useEffect(() => {
+        console.log(emailResponse, errMessage);
         setInProgress(false);
         setMessageColour('redMessage');
         if (emailResponse === 200) {
@@ -25,9 +26,9 @@ const EmailForm = () => {
             setFeedbackMessage("Email addresses don't match");
         } else if (emailResponse === 500 && errMessage === 2) {
             setFeedbackMessage('Your message is empty');
-        } else if (emailResponse === 500 && errMessage === 200) {
+        } else if (emailResponse === 404) {
             setFeedbackMessage(
-                'Looks like the email server is broken. Email me at o.khandxb@gmail.com'
+                `Looks like the email server is broken. Email me at o.khandxb@gmail.com`
             );
         }
     }, [emailResponse, errMessage]);
@@ -116,6 +117,7 @@ const Hidden = styled.div`
 `;
 const Visible = styled.div`
     display: block;
+    text-align: center;
 `;
 
 const SendingMessage = styled.p`
