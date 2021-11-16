@@ -76,6 +76,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const PostContainer = styled.div`
     ${mixins.flexColumn}
     align-items:flex-start;
+    padding: 0.5rem 2rem;
     margin-top: 5rem;
     margin-bottom: 10rem;
     font-family: 'Space Mono';

@@ -39,6 +39,7 @@ const EmailForm = () => {
     ) => {
         setInProgress(true);
         setErrorMessage(0);
+        setFeedbackMessage('');
         var payload = {
             email: email,
             confirmEmail: confirmEmail,
