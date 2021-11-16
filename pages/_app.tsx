@@ -3,7 +3,9 @@ import Head from 'next/head';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
 import UserContext from '../context/UserContext';
-function MyApp({ Component, pageProps }: AppProps) {
+import { motion } from 'framer-motion';
+
+function MyApp({ Component, pageProps, router }: AppProps) {
     return (
         <UserContext.Provider value={{ user: 'lowsound42' }}>
             <Head>
@@ -19,7 +21,21 @@ function MyApp({ Component, pageProps }: AppProps) {
                 />
             </Head>
             <Layout>
-                <Component {...pageProps} />
+                <motion.div
+                    key={router.route}
+                    initial="initial"
+                    animate="animate"
+                    variants={{
+                        initial: {
+                            opacity: 0
+                        },
+                        animate: {
+                            opacity: 1
+                        }
+                    }}
+                >
+                    <Component {...pageProps} />
+                </motion.div>
             </Layout>
         </UserContext.Provider>
     );
