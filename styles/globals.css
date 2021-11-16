@@ -50,3 +50,7 @@ p > a {
     overflow-wrap: break-word;
     word-break: break-word;
 }
+
+p > a > img {
+    width: 100%;
+}

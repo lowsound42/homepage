@@ -24,23 +24,26 @@ export default function Blog(props: IProps) {
                                 (element: IArticle, index: number) => {
                                     if (element.tag_list.includes('blog')) {
                                         return (
-                                            <Link
-                                                key={index}
-                                                href={`/post/${element.slug}`}
-                                                passHref
-                                            >
-                                                <BlogListItem>
-                                                    <ArticleCard
-                                                        title={element.title}
-                                                        time={
-                                                            element.published_timestamp
-                                                        }
-                                                        description={
-                                                            element.description
-                                                        }
-                                                    ></ArticleCard>
-                                                </BlogListItem>
-                                            </Link>
+                                            <ItemContainer key={index}>
+                                                <Link
+                                                    href={`/post/${element.slug}`}
+                                                    passHref
+                                                >
+                                                    <BlogListItem>
+                                                        <ArticleCard
+                                                            title={
+                                                                element.title
+                                                            }
+                                                            time={
+                                                                element.published_timestamp
+                                                            }
+                                                            description={
+                                                                element.description
+                                                            }
+                                                        ></ArticleCard>
+                                                    </BlogListItem>
+                                                </Link>
+                                            </ItemContainer>
                                         );
                                     }
                                 }
@@ -71,6 +74,9 @@ const BlogHeader = styled.h1`
     font-family: 'Space Grotesk';
     font-weight: 700;
     font-size: 2rem;
+`;
+const ItemContainer = styled.div`
+    margin-bottom: 2rem;
 `;
 
 const BlogHolder = styled.div``;
