@@ -73,6 +73,7 @@ const NavContainer = styled.nav`
     display: flex;
     align-items: center;
     width: 100%;
+    font-family: 'Space Grotesk';
     justify-content: center;
     @media ${device.tablet} {
         justify-content: space-between;
