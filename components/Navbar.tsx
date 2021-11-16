@@ -83,7 +83,7 @@ const NavContainer = styled.nav`
 `;
 const NavUList = styled.ul`
     @media ${device.mobileS} {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
     @media ${device.mobileM} {
         font-size: 1rem;

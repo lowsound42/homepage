@@ -84,10 +84,14 @@ const BlogHolder = styled.div``;
 
 const BlogContainer = styled.div`
     ${mixins.flexColumn}
-    margin-top: 5rem;
     font-family: 'Space Mono';
+    margin: 0 auto;
+    margin-top: 8rem;
+    width: 80%;
+    margin-bottom: 10rem;
     @media ${device.laptop} {
         margin-top: 10rem;
+        width: 60%;
     }
 `;
 const BlogList = styled.ul`

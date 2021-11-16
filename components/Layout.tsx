@@ -1,15 +1,17 @@
 import Navbar from './Navbar';
 import { LayoutProps } from './types';
 import styled from 'styled-components';
+import Footer from './Footer';
 
 const Layout = ({ children }: LayoutProps) => {
     return (
         <>
             <Navbar />
-
             <MainContainer>
                 <main>
-                    <LayoutContent>{children} </LayoutContent>
+                    <LayoutContent>
+                        {children} <Footer />
+                    </LayoutContent>
                 </main>
             </MainContainer>
         </>
@@ -18,11 +20,10 @@ const Layout = ({ children }: LayoutProps) => {
 export default Layout;
 
 const MainContainer = styled.div`
+    position: relative;
     min-height: 100vh;
-    padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
 `;
 
 const LayoutContent = styled.div`

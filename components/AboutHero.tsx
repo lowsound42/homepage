@@ -3,6 +3,7 @@ import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 
 const AboutHero = () => {
     return (
@@ -29,6 +30,22 @@ const AboutHero = () => {
                     So, here I am, learning, building, and experimenting.
                 </p>
             </AboutText>
+            <AboutSocial>
+                <SocialLink
+                    href="https://github.com/lowsound42"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    <SiGithub size={40} />
+                </SocialLink>
+                <SocialLink
+                    href="https://www.linkedin.com/in/omarkhanhr/"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    <SiLinkedin size={40} />
+                </SocialLink>
+            </AboutSocial>
         </AboutContainer>
     );
 };
@@ -41,6 +58,16 @@ const AboutContainer = styled.div`
     margin-bottom: 2rem;
     margin-top: 5rem;
 `;
+const AboutSocial = styled.div`
+    ${mixins.flexRow}
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 35%;
+    @media ${device.tablet} {
+        width: 20%;
+    }
+`;
+const SocialLink = styled.a``;
 const CartoonMe = styled(motion.div)``;
 const AboutText = styled.div`
     text-align: center;

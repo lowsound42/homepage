@@ -92,12 +92,5 @@ const HomeContainer = styled.div`
         ${mixins.flexColumn};
     }
     font-family: 'Space Mono';
-`;
-
-const BlogHolder = styled.div`
-    @media ${device.tablet} {
-        ${mixins.flexColumn};
-        margin-top: 2rem;
-        width: 100%;
-    }
+    margin-bottom: 6rem;
 `;

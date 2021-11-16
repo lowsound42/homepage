@@ -100,6 +100,7 @@ const GitIntro = styled.h2`
 
 const GitDesc = styled.div`
     margin-bottom: 2rem;
+    text-align: center;
 `;
 
 const GitHeader = styled.h3`

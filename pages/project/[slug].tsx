@@ -77,10 +77,12 @@ const PostContainer = styled.div`
     ${mixins.flexColumn}
     align-items:flex-start;
     margin-top: 5rem;
+    margin-bottom: 10rem;
     font-family: 'Space Mono';
     @media ${device.laptop} {
         width: 50%;
         margin: 0 auto;
         margin-top: 7rem;
+        margin-bottom: 10rem;
     }
 `;

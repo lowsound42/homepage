@@ -80,9 +80,11 @@ const PostContainer = styled.div`
     align-items:flex-start;
     margin-top: 5rem;
     font-family: 'Space Mono';
+    margin-bottom: 10rem;
     @media ${device.laptop} {
         width: 50%;
         margin: 0 auto;
         margin-top: 7rem;
+        margin-bottom: 10rem;
     }
 `;
