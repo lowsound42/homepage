@@ -93,4 +93,10 @@ const HomeContainer = styled.div`
     }
     font-family: 'Space Mono';
     margin-bottom: 10rem;
+    @media ${device.mobileS} {
+        ${mixins.flexColumn};
+    }
+    @media ${device.laptop} {
+        margin-top: 5rem;
+    }
 `;
