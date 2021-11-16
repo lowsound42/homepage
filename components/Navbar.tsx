@@ -36,23 +36,18 @@ const Navbar = () => {
             <GlobalStyles />
             <NavContainer className=".navContainer">
                 <NavUList>
-                    {menu.map((item, index) => {
-                        return (
-                            <NavLink key={index}>
-                                <Link href={item.path}>
-                                    <a
-                                        className={`cursor-pointer ${
-                                            router.pathname === item.path
-                                                ? 'activeLink navlink'
-                                                : 'inactiveLink navlink'
-                                        }`}
-                                    >
-                                        {item.title}
-                                    </a>
-                                </Link>
-                            </NavLink>
-                        );
-                    })}
+                    <NavLink>
+                        <Link href="/">Home</Link>
+                    </NavLink>
+                    <NavLink>
+                        <Link href="/blog">Blog</Link>
+                    </NavLink>
+                    <NavLink>
+                        <Link href="/projects">Projects</Link>
+                    </NavLink>
+                    <NavLink>
+                        <Link href="/contact">Contact</Link>
+                    </NavLink>
                 </NavUList>
                 <NavToggle onClick={toggleTheme}>
                     {theme === 'dark' ? (
@@ -107,3 +102,20 @@ const NavToggle = styled.div`
         cursor: pointer;
     }
 `;
+// {menu.map((item, index) => {
+//     return (
+//         <NavLink key={index}>
+//             <Link href={item.path}>
+//                 <a
+//                     className={`cursor-pointer ${
+//                         router.pathname === item.path
+//                             ? 'activeLink navlink'
+//                             : 'inactiveLink navlink'
+//                     }`}
+//                 >
+//                     {item.title}
+//                 </a>
+//             </Link>
+//         </NavLink>
+//     );
+// })}
