@@ -10,7 +10,6 @@ import mixins from "../styles/mixins";
 import GitHubCard from "../components/GitHubCard";
 import UserContext from "../context/UserContext";
 import AboutHero from "../components/AboutHero";
-import { motion } from "framer-motion";
 
 const fakeCommit: ICommits = {
   author: { email: "o.khandxb@gmail.com", name: "Omar Khan" },

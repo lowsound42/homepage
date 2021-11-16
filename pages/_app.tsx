@@ -3,7 +3,6 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import UserContext from "../context/UserContext";
-import { motion } from "framer-motion";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
@@ -15,21 +14,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Layout>
-        <motion.div // simple animation that will work for all routers as well.
-          key={router.route}
-          initial="initial"
-          animate="animate"
-          variants={{
-            initial: {
-              opacity: 0,
-            },
-            animate: {
-              opacity: 1,
-            },
-          }}
-        >
-          <Component {...pageProps} />
-        </motion.div>
+        <Component {...pageProps} />
       </Layout>
     </UserContext.Provider>
   );

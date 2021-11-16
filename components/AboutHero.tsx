@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { device } from '../styles/mediaQueryHelpers';
 import mixins from '../styles/mixins';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiLinkedin } from 'react-icons/si';
 
 const AboutHero = () => {
     return (
@@ -61,7 +60,7 @@ const AboutSocial = styled.div`
     }
 `;
 const SocialLink = styled.a``;
-const CartoonMe = styled(motion.div)``;
+const CartoonMe = styled.div``;
 const AboutText = styled.div`
     text-align: center;
     width: 90%;
