@@ -18,8 +18,9 @@ const AboutHero = () => {
             <AboutText>
                 <AboutHeader>Hello. I&apos;m Omar.</AboutHeader>
                 <p>
-                    I&apos;m a Web Developer who likes cats, dogs, bikes, rock
-                    music, pizza, and probably other stuff as well.
+                    I&apos;m a Web Developer who likes cats, dogs, bikes,
+                    football (the real one with feet), rock music, pizza, and
+                    probably other stuff as well.
                 </p>
                 <p>
                     For a while I was a technical recruiter for companies in the

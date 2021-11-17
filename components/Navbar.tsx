@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from '../styles/ThemeConfig';
 import { BiMoon, BiSun } from 'react-icons/bi';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 // Array of links/pages
 const menu = [
