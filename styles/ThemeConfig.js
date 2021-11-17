@@ -136,4 +136,9 @@ export const GlobalStyles = createGlobalStyle`
     .navlink{
       padding: 0.2rem 0.2rem
     }
+
+    code {
+      background-color: ${({ theme }) => theme.colorButton};
+      color: ${({ theme }) => theme.colorButtonText};
+    }
 `;
