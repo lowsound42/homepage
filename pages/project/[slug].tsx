@@ -3,7 +3,7 @@ import path from "path";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
 import IArticle from "../../interfaces/IArticle";
-import { getAllPosts, getArticleFromCache } from "../../utilities/devTo";
+import { getAllPosts, getArticleFromCache } from "../api/api";
 const cacheFile = "./blogcache.json";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";

@@ -5,7 +5,7 @@ import ArticleCard from "../components/ArticleCard";
 import styled from "styled-components";
 import mixins from "../styles/mixins";
 import { device } from "../styles/mediaQueryHelpers";
-import { getAllPosts } from "../utilities/devTo";
+import { getAllPosts } from "./api/api";
 
 interface IProps {
   data: { blogPosts: IArticle[] };

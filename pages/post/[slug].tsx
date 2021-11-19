@@ -4,7 +4,8 @@ import path from "path";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
 import IArticle from "../../interfaces/IArticle";
-import { getAllPosts, getArticleFromCache } from "../../utilities/devTo";
+import { getAllPosts, getArticleFromCache } from "../api/api";
+import { getComments } from "../api/api";
 const cacheFile = "./blogcache.json";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -13,11 +14,25 @@ import styled from "styled-components";
 import { device } from "../../styles/mediaQueryHelpers";
 import Link from "next/link";
 import mixins from "../../styles/mixins";
+import { useEffect, useState } from "react";
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
+interface IComment {
+  body_html: string;
+  created_at: string;
+  user: { name: string };
+}
+
 const Post = (article: IArticle) => {
+  const [comment, setComment] = useState<IComment[]>();
+
+  useEffect(() => {
+    getComments(article.id).then((result) => {
+      setComment(result);
+    });
+  }, [article.id]);
   return (
     <>
       <Head>
@@ -36,6 +51,19 @@ const Post = (article: IArticle) => {
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {article.body_markdown}
         </ReactMarkdown>
+        {/* {comment !== undefined ? <div>Comments</div> : null}
+        {comment !== undefined
+          ? comment.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  dangerouslySetInnerHTML={{
+                    __html: item.body_html,
+                  }}
+                ></div>
+              );
+            })
+          : null} */}
         <Link href={`/blog`} passHref>
           <div className="backButtonHolder">Go back to blogs</div>
         </Link>
