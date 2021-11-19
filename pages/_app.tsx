@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           key={router.route}
           initial="initial"
           animate="animate"
+          transition={{ delay: 0.1 }}
           variants={{
             initial: {
               opacity: 0,

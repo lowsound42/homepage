@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",    
+    "jest": "jest"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.13.3",
@@ -25,6 +26,7 @@
     "@types/styled-components": "^5.1.15",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.3",
+    "jest": "^27.3.1",
     "typescript": "4.4.4"
   }
 }
