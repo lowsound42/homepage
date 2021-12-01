@@ -5,7 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",    
+    "lint": "next lint",
     "jest": "jest"
   },
   "dependencies": {
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/node": "16.11.6",
     "@types/react": "17.0.34",
-    "@types/styled-components": "^5.1.15",
+    "@types/styled-components": "^5.1.16",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.3",
     "jest": "^27.3.1",
