@@ -29,9 +29,17 @@ const GitHubCard = ({
                         {new Date(commitTime).toLocaleString('en-GB')}
                     </GitTime>
                     <GitMessage>
+                        <b>Repo Name: </b>
+                        <CommitIntro>
+                            <a href={`https://github.com/${userRepo}`}>
+                                {userRepo}
+                            </a>
+                        </CommitIntro>
+                    </GitMessage>
+                    <GitMessage>
                         <CommitIntro>
                             <b>Commit Message</b>
-                            {userCommits
+                            {userCommits.sha !== 'fakesha'
                                 ? `: ${userCommits.message}`
                                 : `: ${createdEvent}`}
                         </CommitIntro>
